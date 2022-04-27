@@ -7,8 +7,6 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 
 # Aliases
-alias ui='cd ~/workspace/ui/src'
-
 alias gs='git status'
 alias ga='git add'
 alias gp='git push'
