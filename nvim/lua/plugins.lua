@@ -18,6 +18,7 @@ require('packer').startup(function()
     use 'L3MON4D3/LuaSnip'
     use 'saadparwaiz1/cmp_luasnip'
     use 'onsails/lspkind.nvim'
+    use 'numToStr/Comment.nvim'
 
 end)
 
@@ -27,3 +28,4 @@ require('plugs.lspconfig')
 require('plugs.lualine')
 require('plugs.treesitter')
 require('plugs.nvimcmp')
+require('plugs.comments')
