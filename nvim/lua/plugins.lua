@@ -19,6 +19,7 @@ require('packer').startup(function()
     use 'saadparwaiz1/cmp_luasnip'
     use 'onsails/lspkind.nvim'
     use 'numToStr/Comment.nvim'
+    use 'tpope/vim-fugitive'
 
 end)
 
