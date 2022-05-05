@@ -20,6 +20,7 @@ require('packer').startup(function()
     use 'onsails/lspkind.nvim'
     use 'numToStr/Comment.nvim'
     use 'tpope/vim-fugitive'
+    use 'jose-elias-alvarez/null-ls.nvim'
 
 end)
 
@@ -30,3 +31,4 @@ require('plugs.lualine')
 require('plugs.treesitter')
 require('plugs.nvimcmp')
 require('plugs.comments')
+require('plugs.null-ls')
