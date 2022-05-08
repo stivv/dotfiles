@@ -20,7 +20,7 @@ font:
   bold_italic:
     family: "Hack Nerd Font"
     style: Bold Italic
-  size: 10.4
+  size: 9.8
 
 cursor:
   unfocused_hollow: true

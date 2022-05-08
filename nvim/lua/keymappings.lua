@@ -24,5 +24,7 @@ keymap('n', 'gf', ':edit <cfile><cr>', {})
 
 -- Telescope mappings
 keymap('n', 'ff', ':Telescope find_files<cr>', {})
+keymap('n', 'lg', ':Telescope live_grep<cr>', {})
 
-
+-- Nvim-tree mappings
+keymap('n', 'nt', ':NvimTreeToggle<cr>', {})

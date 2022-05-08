@@ -21,6 +21,13 @@ require('packer').startup(function()
     use 'numToStr/Comment.nvim'
     use 'tpope/vim-fugitive'
     use 'jose-elias-alvarez/null-ls.nvim'
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = {
+          'kyazdani42/nvim-web-devicons', -- optional, for file icon
+        },
+        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    }
 
 end)
 
@@ -32,3 +39,4 @@ require('plugs.treesitter')
 require('plugs.nvimcmp')
 require('plugs.comments')
 require('plugs.null-ls')
+require('plugs.nvim-tree')
