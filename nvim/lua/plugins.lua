@@ -9,6 +9,8 @@ require('packer').startup(function()
     use 'kyazdani42/nvim-web-devicons'
     use 'nvim-treesitter/nvim-treesitter'
     use 'neovim/nvim-lspconfig'
+    use "jose-elias-alvarez/nvim-lsp-ts-utils"
+    use "jose-elias-alvarez/null-ls.nvim"
     -- use 'williamboman/nvim-lsp-installer'
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
@@ -20,7 +22,6 @@ require('packer').startup(function()
     use 'onsails/lspkind.nvim'
     use 'numToStr/Comment.nvim'
     use 'tpope/vim-fugitive'
-    use 'jose-elias-alvarez/null-ls.nvim'
     use {
         'kyazdani42/nvim-tree.lua',
         requires = {
@@ -33,10 +34,9 @@ end)
 
 -- Plugins configs
 require('plugs.telescope')
-require('plugs.lspconfig')
 require('plugs.lualine')
 require('plugs.treesitter')
 require('plugs.nvimcmp')
 require('plugs.comments')
-require('plugs.null-ls')
 require('plugs.nvim-tree')
+require('plugs.null-ls')
