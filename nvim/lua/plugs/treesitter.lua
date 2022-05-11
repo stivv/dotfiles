@@ -1,6 +1,6 @@
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "vue", "php", "lua", "javascript", "html", "json", "vue", "typescript", },
+  ensure_installed = { "php", "lua", "javascript", "html", "json", "vue", "typescript", },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -17,5 +17,5 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"

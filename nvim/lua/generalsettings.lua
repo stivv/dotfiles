@@ -45,4 +45,4 @@ global.pumblend = 5
 vim.g.neosolarized_termtrans = 1
 vim.runtime = '~/.configs/nvim/colors/NeoSolarized.vim'
 vim.cmd [[colorscheme NeoSolarized]]
-
+vim.opt.cursorline = true

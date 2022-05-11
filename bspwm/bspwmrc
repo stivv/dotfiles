@@ -20,8 +20,8 @@ bspc config borderless_monocle   false
 bspc config gapless_monocle      false
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^3'
-bspc rule -a Brave-browser desktop='^4'
+bspc rule -a Brave-browser desktop='^3'
+bspc rule -a Chromium desktop='^4'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
