@@ -38,19 +38,19 @@ local on_attach = function(client, bufnr)
       client.resolved_capabilities.document_formatting = false
     end
 end
--- lspconfig.tsserver.setup({
---     on_attach = function(client, bufnr)
---         client.resolved_capabilities.document_formatting = false
---         client.resolved_capabilities.document_range_formatting = false
---         local ts_utils = require("nvim-lsp-ts-utils")
---         ts_utils.setup({})
---         ts_utils.setup_client(client)
---         -- buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
---         -- buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
---         -- buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
---         on_attach(client, bufnr)
---     end,
--- })
+lspconfig.tsserver.setup({
+    on_attach = function(client, bufnr)
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
+        local ts_utils = require("nvim-lsp-ts-utils")
+        ts_utils.setup({})
+        ts_utils.setup_client(client)
+        -- buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
+        -- buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
+        -- buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
+        on_attach(client, bufnr)
+    end,
+})
 local servers = { 'intelephense', 'volar' }
 for _, lsp in pairs(servers) do
   lspconfig[lsp].setup {

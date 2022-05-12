@@ -10,6 +10,7 @@ bufr.softtabstop = 2
 bufr.tabstop = 2
 bufr.undofile = true
 bufr.swapfile = false
+bufr.modifiable = true
 
 global.hidden = true
 global.title = true
