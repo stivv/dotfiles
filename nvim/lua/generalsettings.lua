@@ -47,3 +47,9 @@ vim.g.neosolarized_termtrans = 1
 vim.runtime = '~/.configs/nvim/colors/NeoSolarized.vim'
 vim.cmd [[colorscheme NeoSolarized]]
 vim.opt.cursorline = true
+
+-- Stop comments on new line
+vim.cmd([[autocmd BufWinEnter * set formatoptions-=r formatoptions-=0]])
+
+-- Disable lualine on NvimTree
+vim.cmd([[au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif]])
