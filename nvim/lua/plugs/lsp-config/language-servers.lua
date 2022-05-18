@@ -36,6 +36,9 @@ local on_attach = function(client, bufnr)
   if client.name == "volar" then
     client.resolved_capabilities.document_formatting = false
   end
+  if client.name == "eslint" then
+    client.resolved_capabilities.document_formatting = true
+  end
 end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
