@@ -17,7 +17,6 @@ cmp.setup({
         { name = 'buffer', keyword_length = 2 },
     }),
     snippet = {
-        -- REQUIRED - you must specify a snippet engine
         expand = function(args)
             require('luasnip').lsp_expand(args.body)
         end,
@@ -29,6 +28,7 @@ cmp.setup({
     formatting = {
         format = lspkind.cmp_format({
             mode = 'symbol', -- show only symbol annotations
+            with_text = true,
             maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 
             -- The function below will be called before any actual modifications from lspkind
@@ -68,11 +68,3 @@ cmp.setup.cmdline(':', {
     })
 })
 
--- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-require('lspconfig')[ 'intelephense' ].setup {
-    capabilities = capabilities
-}
-require('lspconfig')[ 'volar' ].setup {
-    capabilities = capabilities
-}

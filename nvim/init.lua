@@ -12,3 +12,16 @@ require('generalsettings')
 require('keymappings')
 require('plugins')
 
+-- Plugins configs
+require('plugs.telescope')
+require('plugs.lualine')
+require('plugs.bufferline')
+require('plugs.nvim-tree')
+require('plugs.gitsigns')
+
+require('plugs.treesitter')
+require('plugs.comments')
+require('plugs.autopairs')
+
+require('plugs.lsp-config.language-servers')
+require('plugs.lsp-config.nvim-cmp')
