@@ -42,7 +42,13 @@ local on_attach = function(client, bufnr)
 end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+lspconfig.volar.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
+}
 
 local servers = { 'phpactor', 'eslint', 'emmet_ls', 'html', 'tailwindcss' } -- 'intelephense',
 for _, lsp in pairs(servers) do
@@ -51,13 +57,6 @@ for _, lsp in pairs(servers) do
     capabilities = capabilities
   }
 end
-
-
-lspconfig.volar.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
-}
 
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
