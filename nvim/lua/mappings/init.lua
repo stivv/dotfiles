@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 
 local keymap = vim.api.nvim_set_keymap
-local noremap = { noremap = true }
+local noremap = { noremap = true, silent = true }
 
 -- Quickly edit init.lua file
 keymap('n', '<leader>ve', ':edit ~/.config/nvim/init.lua', {})
@@ -29,7 +29,5 @@ keymap('n', 'lg', ':Telescope live_grep<cr>', {})
 -- Nvim-tree mappings
 keymap('n', 'nt', ':NvimTreeToggle<cr>', {})
 
--- Bufferline mappings
-keymap('n', '<leader>1', ':BufferLineGoToBuffer 1<cr>', {})
-keymap('n', '<leader>cn', ':BufferLineCycleNext<cr>', {})
-keymap('n', '<leader>cp', ':BufferLineCyclePrev<cr>', {})
+-- Barbar Bufferline mappings
+require('mappings.barbar')

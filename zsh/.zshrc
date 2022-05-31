@@ -1,13 +1,13 @@
 fpath=(~/.config/zsh/ ${fpath})
 
-source ~/.config/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# source ~/.config/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # Add `skip_global_compinit=1` to ~/.zshenv
 
 autoload -Uz custom_prompt_setup && custom_prompt_setup 
 
 #Paths
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 
 # Aliases

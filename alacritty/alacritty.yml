@@ -9,18 +9,15 @@ window:
 
 font:
   normal:
-    family: "Comic Shanns"
+    family: "FiraCode Nerd Font"
+    style: Medium
+  bold:
+    family: "FiraCode Nerd Font"
+    style: Bold
+  regular:
+    family: "FiraCode Nerd Font"
     style: Regular
-  # bold:
-  #   family: "Hack Nerd Font"
-  #   style: Bold
-  # italic:
-  #   family: "Hack Nerd Font"
-  #   style: Italic
-  # bold_italic:
-  #   family: "Hack Nerd Font"
-  #   style: Bold Italic
-  size: 11.5
+  size: 10
 
 cursor:
   unfocused_hollow: true
