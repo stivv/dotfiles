@@ -1,6 +1,7 @@
 fpath=(~/.config/zsh/ ${fpath})
 
-# source ~/.config/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source ~/.config/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Add `skip_global_compinit=1` to ~/.zshenv
 
 autoload -Uz custom_prompt_setup && custom_prompt_setup 
