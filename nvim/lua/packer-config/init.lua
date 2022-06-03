@@ -3,14 +3,24 @@ return require('packer').startup(function()
 
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
-  use 'EdenEast/nightfox.nvim'
   use 'rcarriga/nvim-notify'
   use 'nvim-lualine/lualine.nvim'
   use 'romgrk/barbar.nvim'
+  use 'numToStr/Comment.nvim'
+  use 'tpope/vim-fugitive'
+  use 'akinsho/toggleterm.nvim'
+
+  -- colorschemes
+  use 'EdenEast/nightfox.nvim'
+  use 'overcache/NeoSolarized'
 
   -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'nvim-treesitter/nvim-treesitter-refactor' }
+  use {
+    'windwp/nvim-autopairs',
+    'windwp/nvim-ts-autotag'
+  }
 
   -- Telescope
   use {

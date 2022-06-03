@@ -15,12 +15,11 @@ set.incsearch  = true
 set.ignorecase = true
 set.smartcase  = true
 
-set.splitbelow    = true
-set.splitright    = true
-set.wrap          = false
-set.scrolloff     = 15
-set.fileencoding  = 'utf-8'
-set.termguicolors = true
+set.splitbelow   = true
+set.splitright   = true
+set.wrap         = false
+set.scrolloff    = 15
+set.fileencoding = 'utf-8'
 
 set.relativenumber = true
 set.cursorline     = true
@@ -29,3 +28,15 @@ set.signcolumn     = 'auto'
 set.hidden      = true
 set.completeopt = 'menuone,noselect'
 set.mouse       = 'a'
+
+-- colorscheme stuff
+syntax            = 'enable'
+set.termguicolors = true
+set.background    = 'dark'
+set.winblend      = 0
+set.wildoptions   = 'pum'
+set.pumblend      = 5
+
+
+-- Stop comments on new line
+vim.cmd([[autocmd BufWinEnter * set formatoptions-=r formatoptions-=0]])
