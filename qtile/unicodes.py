@@ -1,9 +1,10 @@
 from libqtile.widget.textbox import TextBox
 
-def lower_left_triangle(bg_color, fg_color):
+def textbox_triangle(bg_color, fg_color, type = 'left'):
+    icon = '' if type is 'left' else '' 
     return TextBox(
-        text='\u25e2',
-        padding=-2,
-        fontsize=55,
+        text= icon,
+        padding=-6,
+        fontsize=38,
         background=bg_color,
         foreground=fg_color)
