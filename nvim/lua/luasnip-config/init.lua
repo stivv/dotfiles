@@ -14,13 +14,12 @@ local fmt = require("luasnip.extras.fmt").fmt
 -- i(<position>, [default_text])
 local i = ls.insert_node
 
--- Repeat a node 
+-- Repeat a node
 -- rep(<position>)
-local rep = require("luasnip.extras").rep 
+local rep = require("luasnip.extras").rep
 
 ls.snippets = {
-  lua = {
-    -- Lua specific snippets go here
-    s("req", fmt("local {} = require('{}')", { i(1, "default"), rep(1) })),
+  all = {
+    ls.parser.parse_snippet("expand", "-- this is expanded"),
   }
 }

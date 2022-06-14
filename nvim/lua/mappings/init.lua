@@ -20,11 +20,11 @@ keymap('v', '>', '>gv', noremap)
 keymap('i', 'jj', '<esc>', {})
 
 -- Switch to and edit files ( existing or not :) ) quickly
-keymap('n', 'gf', ':edit <cfile><cr>', {})
+keymap('n', '<leader>gf', ':edit <cfile><cr>', {})
 
 -- Telescope mappings
-keymap('n', 'ff', ':Telescope find_files<cr>', {})
-keymap('n', 'lg', ':Telescope live_grep<cr>', {})
+keymap('n', '<leader>ff', ':Telescope find_files<cr>', {})
+keymap('n', '<leader>lg', ':Telescope live_grep<cr>', {})
 
 -- Nvim-tree mappings
 keymap('n', 'nt', ':NvimTreeToggle<cr>', {})
