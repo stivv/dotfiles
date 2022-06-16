@@ -1,6 +1,6 @@
 local set = vim.opt
 
-vim.notify = require("notify")
+vim.notify = require('notify')
 
 set.expandtab  = true
 set.smarttab   = true
@@ -18,7 +18,7 @@ set.smartcase  = true
 set.splitbelow   = true
 set.splitright   = true
 set.wrap         = false
-set.scrolloff    = 15
+set.scrolloff    = 5
 set.fileencoding = 'utf-8'
 
 set.relativenumber = true

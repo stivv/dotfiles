@@ -5,6 +5,8 @@ local cmp = require 'cmp'
 
 cmp.setup {
   mapping = {
+    ["<C-k>"] = cmp.mapping.select_prev_item(),
+    ["<C-j>"] = cmp.mapping.select_next_item(),
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-e>'] = cmp.mapping.abort(),
@@ -16,10 +18,10 @@ cmp.setup {
   },
 
   sources = {
-    { name = 'nvim_lsp' },
-    { name = 'path' },
     { name = 'luasnip' },
+    { name = 'nvim_lsp' },
     { name = 'buffer', keyword_length = 2 },
+    { name = 'path' },
   },
 
   snippet = {
@@ -33,14 +35,14 @@ cmp.setup {
   },
   formatting = {
     format = lspkind.cmp_format({
-      mode = 'symbol', -- show only symbol annotations
+      mode = 'symbol_text', -- show only symbol annotations
       with_text = true,
-      menu = {
-        buffer = '[buf]',
-        nvim_lsp = '[LSP]',
-        path = '[path]',
-        luasnip = '[snip]',
-      },
+      -- menu = {
+      --   buffer = '[buf]',
+      --   nvim_lsp = '[LSP]',
+      --   path = '[path]',
+      --   luasnip = '[snip]',
+      -- },
 
       maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 
@@ -53,7 +55,6 @@ cmp.setup {
   },
 
   experimental = {
-    native_menu = false,
     ghost_text = true,
   },
 }
