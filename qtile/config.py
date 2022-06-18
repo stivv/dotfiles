@@ -15,7 +15,7 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
+    Key([mod], "c", lazy.layout.up(), desc="Move focus"),
 
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
@@ -106,26 +106,26 @@ screens = [
                     highlight_method='line',
                 ),
 
-                textbox_triangle(solarized_dark['bg'], solarized_dark['yellow']),
+                textbox_triangle(solarized_dark['yellow'], solarized_dark['bg'], 'right'),
                 CurrentLayout(background=solarized_dark['yellow']),
-                textbox_triangle(solarized_dark['yellow'], solarized_dark['bg']),
+                textbox_triangle(solarized_dark['bg'], solarized_dark['yellow'], 'right'),
 
                 WindowName(),
                 
-                textbox_triangle(solarized_dark['bg'], solarized_dark['magenta']),
-                CPU(background=solarized_dark['magenta'], format=' {load_percent}%'),
-                textbox_triangle(solarized_dark['magenta'], solarized_dark['bg']),
+                textbox_triangle(solarized_dark['bg'], solarized_dark['yellow']),
+                CPU(background=solarized_dark['yellow'], format=' {load_percent}%'),
+                textbox_triangle(solarized_dark['yellow'], solarized_dark['base02']),
                 
-                Memory(measure_mem='G', format=' {MemUsed: .0f}{mm} /{MemTotal: .0f}{mm}'),
+                Memory(background= solarized_dark['base02'], measure_mem='G', format='﬙{MemUsed: .0f}{mm} /{MemTotal: .0f}{mm}'),
 
-                textbox_triangle(solarized_dark['bg'], solarized_dark['red']),
-                PulseVolume(background=solarized_dark['red'], fmt=" {}"),
-                textbox_triangle(solarized_dark['red'], solarized_dark['bg']),
+                textbox_triangle(solarized_dark['base02'], solarized_dark['magenta']),
+                PulseVolume(background=solarized_dark['magenta'], fmt=" {}"),
+                textbox_triangle(solarized_dark['magenta'], solarized_dark['bg']),
 
                 Backlight(backlight_name="intel_backlight", fmt=" {} "),
                 
-                textbox_triangle(solarized_dark['bg'], solarized_dark['cyan']),
-                Clock(background=solarized_dark['cyan'], format="%a,%m/%d %H:%M"),
+                textbox_triangle(solarized_dark['bg'], solarized_dark['red']),
+                Clock(background=solarized_dark['red'], format=" %a,%m/%d %H:%M"),
             ],
             size=24,
             background=solarized_dark['bg'],
