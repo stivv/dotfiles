@@ -7,12 +7,12 @@ return require('packer').startup(function()
   use 'nvim-lualine/lualine.nvim'
   use 'romgrk/barbar.nvim'
   use 'numToStr/Comment.nvim'
-  use 'tpope/vim-fugitive'
   use 'akinsho/toggleterm.nvim'
 
   -- colorschemes
   use 'EdenEast/nightfox.nvim'
   use 'overcache/NeoSolarized'
+  use 'catppuccin/nvim'
 
   -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }

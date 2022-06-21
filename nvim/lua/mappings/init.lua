@@ -17,17 +17,20 @@ keymap('v', '<', '<gv', noremap)
 keymap('v', '>', '>gv', noremap)
 
 -- Quickly escape to normal mode
-keymap('i', 'jj', '<esc>', {})
+keymap('i', 'jj', '<esc>', noremap)
 
 -- Switch to and edit files ( existing or not :) ) quickly
 keymap('n', '<leader>gf', ':edit <cfile><cr>', {})
 
 -- Telescope mappings
-keymap('n', '<leader>ff', ':Telescope find_files<cr>', {})
-keymap('n', '<leader>lg', ':Telescope live_grep<cr>', {})
+keymap('n', '<leader>ff', ':Telescope find_files<cr>', noremap)
+keymap('n', '<leader>fh', ':Telescope help_tags<cr>', noremap)
+keymap('n', '<leader>s', ':Telescope current_buffer_fuzzy_find<cr>', noremap)
+keymap('n', '<leader>S', ':Telescope live_grep<cr>', noremap)
+keymap('n', '<leader><leader>', ':Telescope buffers<cr>', noremap)
 
 -- Nvim-tree mappings
-keymap('n', 'nt', ':NvimTreeToggle<cr>', {})
+keymap('n', 'nt', ':NvimTreeToggle<cr>', noremap)
 
 -- Barbar Bufferline mappings
 require('mappings.barbar')
