@@ -1,6 +1,6 @@
 ### Solarized Dark ###
-solarized_dark = {
-    'bg':        '#002b36', 
+color_scheme = {
+    'bg':        '#24273a', #'#002b36', 
     'fg':        '#839496', 
     'base02':    '#073642',
     'base01':    '#586e75',

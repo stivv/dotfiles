@@ -2,3 +2,4 @@ zsh/.zhistory
 zsh/.zcompdump
 nvim/backup
 nvim/plugin
+qtile/__pycache__

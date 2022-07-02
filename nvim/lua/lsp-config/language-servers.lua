@@ -59,7 +59,7 @@ lspconfig.volar.setup {
   filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
 }
 
-local servers = { 'intelephense', 'eslint', 'emmet_ls', 'html', 'tailwindcss' }
+local servers = { 'clangd', 'pylsp', 'intelephense', 'eslint', 'emmet_ls', 'html', 'tailwindcss' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,

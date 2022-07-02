@@ -1,10 +1,10 @@
 from libqtile.bar import Bar
 from libqtile.layout import Max, Columns, Floating 
-from libqtile.widget import GroupBox, CurrentLayout, WindowName, Clock, CPU, Memory, PulseVolume, Backlight
+from libqtile.widget import GroupBox, Battery, CurrentLayout, WindowName, Clock, CPU, Memory, PulseVolume, Backlight
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from unicodes import textbox_triangle
-from colors import solarized_dark
+from colors import color_scheme
 
 mod = "mod4"
 terminal = "kitty"
@@ -89,7 +89,7 @@ layouts = [
     Max(), 
 ]
 
-widget_defaults = dict( font="Comic Shanns", fontsize=14, padding=3, )
+widget_defaults = dict( font="Comic Shanns Regular", fontsize=14, padding=3, )
 extension_defaults = widget_defaults.copy()
 
 screens = [
@@ -98,42 +98,43 @@ screens = [
             [
                 GroupBox(
                     borderwidth=0,
-                    active=solarized_dark['magenta'],
-                    inactive=solarized_dark['yellow'],
+                    active=color_scheme['magenta'],
+                    inactive=color_scheme['yellow'],
                     disable_drag=True,
-                    block_highlight_text_color=solarized_dark['red'],
-                    highlight_color=solarized_dark['bg'],
+                    block_highlight_text_color=color_scheme['red'],
+                    highlight_color=color_scheme['bg'],
                     highlight_method='line',
                 ),
 
-                textbox_triangle(solarized_dark['yellow'], solarized_dark['bg'], 'right'),
-                CurrentLayout(background=solarized_dark['yellow']),
-                textbox_triangle(solarized_dark['bg'], solarized_dark['yellow'], 'right'),
+                textbox_triangle(color_scheme['yellow'], color_scheme['bg'], 'right'),
+                CurrentLayout(background=color_scheme['yellow']),
+                textbox_triangle(color_scheme['bg'], color_scheme['yellow'], 'right'),
 
                 WindowName(),
                 
-                textbox_triangle(solarized_dark['bg'], solarized_dark['yellow']),
-                CPU(background=solarized_dark['yellow'], format=' {load_percent}%'),
-                textbox_triangle(solarized_dark['yellow'], solarized_dark['base02']),
+                textbox_triangle(color_scheme['bg'], color_scheme['yellow']),
+                CPU(background=color_scheme['yellow'], format=' {load_percent}%'),
+                textbox_triangle(color_scheme['yellow'], color_scheme['bg']),
                 
-                Memory(background= solarized_dark['base02'], measure_mem='G', format='﬙{MemUsed: .0f}{mm} /{MemTotal: .0f}{mm}'),
+                Memory(background= color_scheme['bg'], measure_mem='G', format='﬙{MemUsed: .0f}{mm} /{MemTotal: .0f}{mm}'),
 
-                textbox_triangle(solarized_dark['base02'], solarized_dark['magenta']),
-                PulseVolume(background=solarized_dark['magenta'], fmt=" {}"),
-                textbox_triangle(solarized_dark['magenta'], solarized_dark['bg']),
+                textbox_triangle(color_scheme['bg'], color_scheme['magenta']),
+                PulseVolume(background=color_scheme['magenta'], fmt=" {}"),
+                textbox_triangle(color_scheme['magenta'], color_scheme['bg']),
 
                 Backlight(backlight_name="intel_backlight", fmt=" {} "),
+                # Battery(format='{char} {percent:2.0%}   {watt:.0f}W', discharge_char="", charge_char='', notify_below=60),
                 
-                textbox_triangle(solarized_dark['bg'], solarized_dark['red']),
-                Clock(background=solarized_dark['red'], format=" %a,%m/%d %H:%M"),
+                textbox_triangle(color_scheme['bg'], color_scheme['red']),
+                Clock(background=color_scheme['red'], format=" %a,%m/%d %H:%M"),
             ],
             size=24,
-            background=solarized_dark['bg'],
+            background=color_scheme['bg'],
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
         # Set static wallpaper
-        wallpaper = '~/Pictures/wallpapers/solarized4.jpg',
+        wallpaper = '~/Pictures/wallpapers/tropic_island_evening.jpg',
         # Set wallpaper mode to 'fill'/'stretch'
         wallpaper_mode = 'fill'
     ),

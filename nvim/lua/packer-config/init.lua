@@ -13,6 +13,8 @@ return require('packer').startup(function()
   use 'EdenEast/nightfox.nvim'
   use 'overcache/NeoSolarized'
   use 'catppuccin/nvim'
+  use { 'sonph/onehalf', rtp = 'vim' }
+
 
   -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }

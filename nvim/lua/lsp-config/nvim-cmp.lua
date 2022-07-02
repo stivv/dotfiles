@@ -18,8 +18,8 @@ cmp.setup {
   },
 
   sources = {
-    { name = 'luasnip' },
     { name = 'nvim_lsp' },
+    { name = 'luasnip' },
     { name = 'buffer', keyword_length = 2 },
     { name = 'path' },
   },

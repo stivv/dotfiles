@@ -30,13 +30,12 @@ set.completeopt = 'menuone,noselect'
 set.mouse       = 'a'
 
 -- colorscheme stuff
-syntax            = 'enable'
+syntax            = 'on'
 set.termguicolors = true
 set.background    = 'dark'
 set.winblend      = 0
 set.wildoptions   = 'pum'
 set.pumblend      = 5
-
 
 -- Stop comments on new line
 vim.cmd([[autocmd BufWinEnter * set formatoptions-=r formatoptions-=0]])
