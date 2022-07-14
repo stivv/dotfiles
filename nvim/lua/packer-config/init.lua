@@ -4,8 +4,8 @@ return require('packer').startup(function()
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
   use 'rcarriga/nvim-notify'
-  use 'nvim-lualine/lualine.nvim'
-  use 'romgrk/barbar.nvim'
+  -- use 'nvim-lualine/lualine.nvim'
+  -- use 'romgrk/barbar.nvim'
   use 'numToStr/Comment.nvim'
   use 'akinsho/toggleterm.nvim'
 

@@ -35,19 +35,20 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.format { async = true }<CR>', opts)
 
-  if client.resolved_capabilities.document_formatting then
+  local capabilities = client.server_capabilities
+  if capabilities.document_formatting then
     vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
   end
   if client.name == "volar" then
-    client.resolved_capabilities.document_formatting = false
+    capabilities.document_formatting = false
   end
   if client.name == "eslint" then
-    client.resolved_capabilities.document_formatting = true
+    capabilities.document_formatting = true
   end
   -- if client.name == "html" then
-  -- client.resolved_capabilities.textDocument.completion.completionItem.snippetSupport = true
+  -- capabilities.textDocument.completion.completionItem.snippetSupport = true
   -- end
 end
 
