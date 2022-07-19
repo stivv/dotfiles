@@ -2,10 +2,7 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
   use 'kyazdani42/nvim-web-devicons'
-  use 'kyazdani42/nvim-tree.lua'
   use 'rcarriga/nvim-notify'
-  -- use 'nvim-lualine/lualine.nvim'
-  -- use 'romgrk/barbar.nvim'
   use 'numToStr/Comment.nvim'
   use 'akinsho/toggleterm.nvim'
 
@@ -13,7 +10,6 @@ return require('packer').startup(function()
   use 'EdenEast/nightfox.nvim'
   use 'overcache/NeoSolarized'
   use 'catppuccin/nvim'
-  use { 'sonph/onehalf', rtp = 'vim' }
 
 
   -- Treesitter
@@ -40,5 +36,15 @@ return require('packer').startup(function()
   use 'saadparwaiz1/cmp_luasnip'
   use 'onsails/lspkind.nvim'
   use 'williamboman/nvim-lsp-installer'
+
+  -- Neo-tree
+  use {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+    }
+  }
 
 end)

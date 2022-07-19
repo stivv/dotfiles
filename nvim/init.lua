@@ -5,5 +5,6 @@ require("packer-config")
 -- Plugins configs
 require("packer-config.plugin-configs")
 
--- Custom stuff
-vim.o.winbar = "%{%v:lua.require('utils.winbar').eval()%}"
+-- Plugins from scratch ;)
+vim.o.winbar = "%{%v:lua.require('winbar').eval()%}"
+vim.o.statusline = "%{%v:lua.require('statusline').eval()%}"

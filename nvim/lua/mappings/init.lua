@@ -30,7 +30,4 @@ keymap('n', '<leader>S', ':Telescope live_grep<cr>', noremap)
 keymap('n', '<leader><leader>', ':Telescope buffers<cr>', noremap)
 
 -- Nvim-tree mappings
-keymap('n', 'nt', ':NvimTreeToggle<cr>', noremap)
-
--- Barbar Bufferline mappings
-require('mappings.barbar')
+keymap('n', 'nt', ':NeoTreeFloatToggle<cr>', noremap)

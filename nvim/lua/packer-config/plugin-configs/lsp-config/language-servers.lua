@@ -39,7 +39,7 @@ local on_attach = function(client, bufnr)
 
   local capabilities = client.server_capabilities
   if capabilities.document_formatting then
-    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format { async = true }")
   end
   if client.name == "volar" then
     capabilities.document_formatting = false
