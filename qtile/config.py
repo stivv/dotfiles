@@ -52,7 +52,7 @@ keys = [
 
     # Launch apps
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod], "space", lazy.spawn("rofi -show run"), desc="Launch rofi"),
+    Key([mod], "space", lazy.spawn("rofi -show drun"), desc="Launch rofi"),
     
     # Brightness
     Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 2")),

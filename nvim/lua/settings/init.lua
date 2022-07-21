@@ -29,6 +29,9 @@ set.hidden      = true
 set.completeopt = 'menuone,noselect'
 set.mouse       = 'a'
 
+set.list      = true
+set.listchars = { eol = '↲', tab = '·', trail = '·', precedes = '', extends = '' }
+
 -- colorscheme stuff
 syntax            = 'on'
 set.termguicolors = true
