@@ -1,5 +1,11 @@
 zsh/.zhistory
 zsh/.zcompdump
+zsh/zsh-autocomplete
+zsh/spaceship
+zsh/zsh-autosuggestions
+zsh/zsh-syntax-highlighting
+
 nvim/backup
-nvim/plugin
+nvim/plugin/packer_compiled.lua
+
 qtile/__pycache__
