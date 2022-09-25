@@ -4,11 +4,8 @@
 # EXPORT ENVIRONMENT VARIABLE #
 ###############################
 
-export TERM='rxvt-256color'
 export DOTFILES="$HOME/.dotfiles"
 export WORKSPACE="$HOME/workspace"
-
-[ -f "$DOTFILES/install_config" ] && source "$DOTFILES/install_config"
 
 # XDG
 export XDG_CONFIG_HOME=$HOME/.config
@@ -31,31 +28,5 @@ export SCREENSHOT="$HOME/Documents/images/screenshots"
 # Man pages
 export MANPAGER='nvim +Man!'
 
-# fzf
-export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-FZF_COLORS="bg+:-1,\
-fg:gray,\
-fg+:white,\
-border:black,\
-spinner:0,\
-hl:yellow,\
-header:blue,\
-info:green,\
-pointer:red,\
-marker:red,\
-prompt:gray,\
-hl+:red"
-
-export FZF_DEFAULT_OPTS="--height 60% \
---border sharp \
---color='$FZF_COLORS' \
---prompt '∷ ' \
---pointer ▶ \
---marker ⇒"
-export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -n 10'"
-
-# export FZF_TMUX_OPTS="-p"
-
 skip_global_compinit=1
+. "$HOME/.cargo/env"
