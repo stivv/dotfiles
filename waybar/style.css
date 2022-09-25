@@ -1,15 +1,13 @@
 * {
 	border: none;
-	border-radius: 10px;
-  font-family: "FiraCode Nerd Font";
-	font-size: 12px;
+  font-family: "FiraCode Medium";
   font-weight: bold;
 	min-height: 5px;
 }
 
 window#waybar {
   background: #161320;
-  opacity: 0.8;
+  opacity: 0.95;
   border-radius: 0;
   padding: 2px 0;
   box-shadow: 0 0 10px #fff;
@@ -29,34 +27,37 @@ window#waybar.hidden {
 
 #network, #cpu, #tray, #custom-launcher, #custom-power,
 #pulseaudio, #battery, #backlight, #clock,#memory {
-  margin: 4px 2px;
-  padding: 2px 10px;
+  margin: 2px;
+  padding: 2px 5;
 	border-radius: 5px;
 	transition: none;
+	color: #DDB6F2;
+  margin: 4px;
+	font-size: 11px;
 }
 
-#network {
-	color: #161320;
-	background: #bd93f9;
-}
-
-#pulseaudio {
-	color: #1A1826;
-	background: #FAE3B0;
-}
-
-#battery {
-	color: #161320;
-	background: #B5E8E0;
-}
-
-#battery.charging, #battery.plugged {
-	color: #161320;
-    background-color: #B5E8E0;
-}
+/* #network { */
+/* 	color: #161320; */
+/* 	background: #bd93f9; */
+/* } */
+/**/
+/* #pulseaudio { */
+/* 	color: #1A1826; */
+/* 	background: #FAE3B0; */
+/* } */
+/**/
+/* #battery { */
+/* 	color: #161320; */
+/* 	background: #B5E8E0; */
+/* } */
+/**/
+/* #battery.charging, #battery.plugged { */
+/* 	color: #161320; */
+/*     background-color: #B5E8E0; */
+/* } */
 
 #battery.critical:not(.charging) {
-    background-color: #B5E8E0;
+    /* background-color: #B5E8E0; */
     color: #161320;
     animation-name: blink;
     animation-duration: 0.5s;
@@ -67,33 +68,33 @@ window#waybar.hidden {
 
 @keyframes blink {
     to {
-        background-color: #BF616A;
+        /* background-color: #BF616A; */
         color: #B5E8E0;
     }
 }
 
-#backlight {
-	color: #161320;
-	background: #F8BD96;
-}
-#clock {
-	color: #161320;
-	background: #ABE9B3;
-}
-
-#memory {
-	color: #161320;
-	background: #DDB6F2;
-}
-#cpu {
-	color: #161320;
-	background: #96CDFB;
-}
-
-#tray {
-	color: #B5E8E0;
-	background: #161320;
-}
+/* #backlight { */
+/* 	color: #161320; */
+/* 	background: #F8BD96; */
+/* } */
+/* #clock { */
+/* 	color: #161320; */
+/* 	background: #ABE9B3; */
+/* } */
+/**/
+/* #memory { */
+/* 	color: #161320; */
+/* 	background: #DDB6F2; */
+/* } */
+/* #cpu { */
+/* 	color: #161320; */
+/* 	background: #96CDFB; */
+/* } */
+/**/
+/* #tray { */
+/* 	color: #B5E8E0; */
+/* 	background: #161320; */
+/* } */
 
 #custom-launcher {
 	font-size: 14px;
@@ -104,29 +105,30 @@ window#waybar.hidden {
 #custom-power {
 	font-size: 13px;
 	color: #161320;
-	background: #F28FAD;
+	/* background: #F28FAD; */
 }
 
 #tags button {
-  padding: 1px 5px;
-  border-radius: 6px;
-	color: #DDB6F2;
-  margin: 4px;
-	font-size: 11px;
+	font-size: 22px;
+	padding: 0px;
+	margin: 0px 10px;
+	color: #bd93f9;
+	font-weight: bolder;
 }
 
 #tags button:hover {
-  background: transparent;
-  border: 2px solid #DDB6F2;
+	color: #89DCEB;
   box-shadow: none;
+	background: transparent;
 }
 
-#tags button.focused {
-  background-color: #DDB6F2;
-	color: #161320;
+#tags button.focused.occupied, #tags button.focused {
+	color: #ff9900;
+	font-size: 24px;
 }
 
 #tags button.occupied {
-  border: 2px solid #DDB6F2;
+	color: #89DCEB;
+	font-size: 24px;
 }
 

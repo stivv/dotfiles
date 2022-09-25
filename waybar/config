@@ -1,35 +1,36 @@
 {
 	"layer": "top",
-	"modules-left": ["custom/launcher","river/tags"],
-	"modules-center": ["cpu","memory","tray"],
-	"modules-right": ["backlight", "pulseaudio","network", "battery", "clock", "custom/power"],
+	"modules-left": ["custom/launcher","cpu","memory","network","tray"],
+	"modules-center": ["river/tags"],
+	"modules-right": ["backlight", "pulseaudio","battery", "clock", "custom/power"],
 	
   "river/tags": {
-    "num-tags": 9
+    "num-tags": 6,
+		"tag-labels": ["","","","","狀",""]
   },
 
 	"pulseaudio": {
 		"tooltip": false,
 		"scroll-step": 5,
-		"format": " {volume}%",
-		"format-muted": " muted",
+		"format": "🔊 {volume}%",
+		"format-muted": "🔇 muted",
 		"on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
 	},
 
 	"network": {
     "format": "{ifname}",
-    "format-wifi": " {essid} ({signalStrength}%)",
-    "format-ethernet": " {ipaddr}/{cidr} ",
+    "format-wifi": "📶 {essid} ({signalStrength}%)",
+    "format-ethernet": "  {ipaddr}/{cidr} ",
     "format-disconnected": "", //An empty format will hide the module.
     "tooltip-format": " {ifname} via {gwaddr}",
-    "tooltip-format-wifi": " {essid} ({signalStrength}%)",
+    "tooltip-format-wifi": "  {essid} ({signalStrength}%)",
     "tooltip-format-ethernet": " {ifname}",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50
   },
 
 	"backlight": {
-		"format": " {}%",
+		"format": "☀️ {}%",
 		"interval":1,
     "on-scroll-up": "brightnessctl set 5%+",
 		"on-scroll-down": "brightnessctl set 5%-"
@@ -45,32 +46,32 @@
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["   ", "   ", "   ", "   ", "   "]
     },
 	"tray":{
 		"icon-size":18,
 		"spacing": 10
 	},
     "clock": {
-        "format": "{: %a %d %b %H:%M}"
+        "format": "{:📅 %a %d %b %H:%M}"
     },
     "cpu": {
         "interval": 15,
-        "format": " {}%",
+        "format": "🖥️ {}%",
         "max-length": 10
     },
     "memory": {
         "interval": 30,
-        "format": " {used:0.1f}G/{total:0.1f}G",
+        "format": "🧠 {used:0.1f}G/{total:0.1f}G",
         "max-length": 20
     },
     "custom/launcher":{
-        "format": "",
+        "format": "🚀",
         "on-click": "wofi --show run",
         "on-click-right": "killall wofi"
     },
     "custom/power":{
-        "format": "⏻",
+        "format": "💤",
         "on-click": "shutdown now",
     },
 }
