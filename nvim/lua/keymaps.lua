@@ -1,9 +1,30 @@
-local keymap = vim.keymap
+local keymap = vim.api.nvim_set_keymap
+local noremap = { noremap = true, silent = true }
 
-keymap.set('i', 'jj', '<ESC>')
+-- Leader key to spacebar
+vim.g.mapleader = " "
+
+-- Quickly edit init.lua file
+keymap('n', '<leader>ve', ':edit ~/.config/nvim/init.lua', {})
+
+-- Quicker switching between windows
+keymap('n', '<c-h>', '<c-w>h', noremap)
+keymap('n', '<c-j>', '<c-w>j', noremap)
+keymap('n', '<c-k>', '<c-w>k', noremap)
+keymap('n', '<c-l>', '<c-w>l', noremap)
+
+-- Reselect visual selection after indenting
+keymap('v', '<', '<gv', noremap)
+keymap('v', '>', '>gv', noremap)
+
+-- Quickly escape to normal mode
+keymap('i', 'jj', '<esc>', noremap)
+
+-- Switch to and edit files ( existing or not :) ) quickly
+keymap('n', '<leader>gf', ':edit <cfile><cr>', {})
 
 -- No yank on x
-keymap.set('n', 'x', '"_x')
+keymap('n', 'x', '"_x', noremap)
 
 -- Select all
-keymap.set('n', '<C-a>', 'gg<S-v>G')
+keymap('n', '<C-a>', 'gg<S-v>G', noremap)

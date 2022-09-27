@@ -1,7 +1,7 @@
 vim.cmd('autocmd!')
 
 local opt = vim.opt
-local wo = vim.wo
+-- local wo = vim.wo
 
 vim.g.mapleader = " "
 vim.notify = require('notify')
@@ -15,7 +15,7 @@ opt.title = true
 opt.undofile   = true
 opt.swapfile   = false
 opt.modifiable = true
-opt.backup     = false
+-- opt.backup     = false
 
 opt.hlsearch   = true
 opt.incsearch  = true

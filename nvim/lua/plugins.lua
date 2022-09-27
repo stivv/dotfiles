@@ -20,17 +20,13 @@ packer.startup(function(use)
 
 	use 'navarasu/onedark.nvim'
 	use 'tjdevries/colorbuddy.nvim'
-	use { "catppuccin/nvim", as = "catppuccin" }
+	-- use { "catppuccin/nvim", as = "catppuccin" }
 
 	use 'nvim-lualine/lualine.nvim'
 
 	-- LSP
 	use 'neovim/nvim-lspconfig'
 	use 'glepnir/lspsaga.nvim'
-	use 'jose-elias-alvarez/null-ls.nvim'
-	use 'williamboman/mason.nvim'
-	use 'williamboman/mason-lspconfig.nvim'
-	use 'MunifTanjim/prettier.nvim'
 
 	-- CMP
 	use 'hrsh7th/nvim-cmp'
@@ -48,8 +44,9 @@ packer.startup(function(use)
 	-- Treesitter
 	use {
 		'nvim-treesitter/nvim-treesitter',
-		run = 'TSUpdate'
+		run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
 	}
+	use 'nvim-treesitter/nvim-treesitter-refactor'
 	use 'windwp/nvim-autopairs'
 	use 'windwp/nvim-ts-autotag'
 
