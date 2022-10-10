@@ -9,7 +9,6 @@ onedark.load()
 
 vim.cmd [[colorscheme onedark]]
 
-
 local cb_ok, colorbuddy = pcall(require, 'colorbuddy')
 if not cb_ok then return end
 
@@ -36,19 +35,6 @@ Group.new('DiagnosticUnderlineError', colors.none, colors.none, styles.undercurl
 Group.new('DiagnosticUnderlineWarn', colors.none, colors.none, styles.undercurl, cWarn)
 Group.new('DiagnosticUnderlineInfo', colors.none, colors.none, styles.undercurl, cInfo)
 Group.new('DiagnosticUnderlineHint', colors.none, colors.none, styles.undercurl, cHint)
-
--- helper function
-local function update_hl(group, tbl)
-	local old_hl = vim.api.nvim_get_hl_by_name(group, true)
-	local new_hl = vim.tbl_extend('force', old_hl, tbl)
-	vim.api.nvim_set_hl(0, group, new_hl)
-end
-
-update_hl('TSKeyword', { italic = true })
-update_hl('TSConditional', { italic = true })
-update_hl('TSUnderline', { italic = true })
-update_hl('TSNamespace', { italic = true })
-update_hl('TSKeywordFunction', { italic = true })
 
 -- Group.new('DiagnosticVirtualTextError', cError, cError:dark():dark():dark():dark(), styles.NONE)
 -- Group.new('DiagnosticVirtualTextInfo', cInfo, cInfo:dark():dark():dark(), styles.NONE)
