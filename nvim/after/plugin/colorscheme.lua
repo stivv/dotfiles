@@ -2,7 +2,8 @@ local one_ok, onedark = pcall(require, 'onedark')
 if not one_ok then return end
 
 onedark.setup {
-	style = 'deep'
+	style = 'deep',
+	transparent = true,
 }
 onedark.load()
 
