@@ -7,9 +7,9 @@
 
 window#waybar {
   background: #161320;
-  opacity: 0.95;
+  opacity: 0.82;
   border-radius: 0;
-  padding: 2px 0;
+  padding: 1px 0;
   box-shadow: 0 0 10px #fff;
 }
 
@@ -18,7 +18,7 @@ window#waybar.hidden {
 }
 
 #window {
-	margin: 4px 0;
+	margin: 2px 0;
 	padding-left: 10px;
 	padding-right: 10px;
 	transition: none;
