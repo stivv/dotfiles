@@ -27,6 +27,7 @@ packer.startup(function(use)
 	-- LSP
 	use 'neovim/nvim-lspconfig'
 	use 'glepnir/lspsaga.nvim'
+	use 'williamboman/mason.nvim'
 
 	-- CMP
 	use 'hrsh7th/nvim-cmp'
