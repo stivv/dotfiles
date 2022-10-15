@@ -1,6 +1,6 @@
 from libqtile.bar import Bar
 from libqtile.layout import Max, Columns, Floating 
-from libqtile.widget import GroupBox, Battery, CurrentLayout, WindowName, Clock, CPU, Memory, PulseVolume, Backlight
+from libqtile.widget import GroupBox, Battery, QuickExit, Spacer, Clock, CPU, Memory, PulseVolume, Backlight
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from unicodes import textbox_triangle
@@ -63,7 +63,7 @@ keys = [
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +1%")),
 ]
 
-groups= [Group(i, label=' ', layout='max') for i in "123456789"]
+groups= [Group(i, label=' ', layout='max') for i in "123456"]
 
 for i in groups:
     keys.extend([
@@ -89,13 +89,16 @@ layouts = [
     Max(), 
 ]
 
-widget_defaults = dict( font="Comic Shanns Regular", fontsize=14, padding=3, )
+widget_defaults = dict( font="Fisa Code Bold", fontsize=12, padding=3, )
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
         top=Bar(
             [
+                CPU(format='  {load_percent}% '),
+                Memory(measure_mem='G', format=' ﬙ {MemUsed:.2f}{mm}/{MemTotal:.2f}{mm} '),
+                Spacer(),
                 GroupBox(
                     borderwidth=0,
                     active=color_scheme['magenta'],
@@ -103,30 +106,15 @@ screens = [
                     disable_drag=True,
                     block_highlight_text_color=color_scheme['red'],
                     highlight_color=color_scheme['bg'],
-                    highlight_method='line',
+                    highlight_method='text',
+                    fontsize=25,
                 ),
-
-                textbox_triangle(color_scheme['yellow'], color_scheme['bg'], 'right'),
-                CurrentLayout(background=color_scheme['yellow']),
-                textbox_triangle(color_scheme['bg'], color_scheme['yellow'], 'right'),
-
-                WindowName(),
-                
-                textbox_triangle(color_scheme['bg'], color_scheme['yellow']),
-                CPU(background=color_scheme['yellow'], format=' {load_percent}%'),
-                textbox_triangle(color_scheme['yellow'], color_scheme['bg']),
-                
-                Memory(background= color_scheme['bg'], measure_mem='G', format='﬙{MemUsed: .0f}{mm} /{MemTotal: .0f}{mm}'),
-
-                textbox_triangle(color_scheme['bg'], color_scheme['magenta']),
-                PulseVolume(background=color_scheme['magenta'], fmt=" {}"),
-                textbox_triangle(color_scheme['magenta'], color_scheme['bg']),
-
-                Backlight(backlight_name="intel_backlight", fmt=" {} "),
+                Spacer(),
+                PulseVolume(fmt=" {}"),
+                Backlight(backlight_name="intel_backlight", fmt="  {} "),
                 # Battery(format='{char} {percent:2.0%}   {watt:.0f}W', discharge_char="", charge_char='', notify_below=60),
-                
-                textbox_triangle(color_scheme['bg'], color_scheme['red']),
-                Clock(background=color_scheme['red'], format=" %a,%m/%d %H:%M"),
+                Clock(format="  %a,%m/%d %H:%M "),
+                QuickExit(default_text=" "),
             ],
             size=24,
             background=color_scheme['bg'],
