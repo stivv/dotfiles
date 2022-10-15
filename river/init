@@ -10,13 +10,14 @@
 
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
 
+waybar &
 swaybg -i ~/Pictures/wallpapers/minimal-circuit.png &
 dunst &
-waybar &
 
 riverctl map normal Super Return spawn kitty
 riverctl map normal Super Space spawn "wofi --show run"
 riverctl map normal Super+Shift b spawn "brave --enable-features=UseOzonePlatform --ozone-platform=wayland"
+riverctl map normal Super+Shift s spawn "slack --enable-features=UseOzonePlatform --ozone-platform=wayland"
 
 # Super+Q to close the focused view
 riverctl map normal Super Q close
@@ -150,7 +151,7 @@ done
 
 # Set background and border color
 riverctl background-color 0x002b36
-riverctl border-color-focused 0xbd93f9
+riverctl border-color-focused 0x313131
 riverctl border-color-unfocused 0x93a1a1
 
 # Set keyboard repeat rate
