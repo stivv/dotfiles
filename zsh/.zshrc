@@ -1,6 +1,5 @@
 fpath=(~/.config/zsh/ ${fpath})
 
-eval "$(starship init zsh)"
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -32,3 +31,5 @@ alias glo='git log --pretty="oneline"'
 alias glol='git log --graph --oneline --decorate'
 
 alias vim="nvim"
+
+eval "$(starship init zsh)"
