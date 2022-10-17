@@ -28,3 +28,13 @@ keymap('n', 'x', '"_x', noremap)
 
 -- Select all
 keymap('n', '<C-a>', 'gg<S-v>G', noremap)
+
+-- Buffers
+keymap('n', '<leader>l', ':bn<cr>', noremap)
+keymap('n', '<leader>h', ':bp<cr>', noremap)
+keymap('n', '<leader>bc', ':bd!<cr>', noremap)
+keymap('n', '<leader>ba', ':%bd|e#|bd#<cr>', noremap)
+
+-- Terminal
+keymap('n', '<leader>tt', ':term<cr>', noremap)
+keymap('t', '<leader>tt', '<C-\\><C-n>', noremap)

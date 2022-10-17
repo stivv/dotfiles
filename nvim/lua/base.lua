@@ -6,6 +6,9 @@ local opt = vim.opt
 vim.g.mapleader = " "
 vim.notify = require('notify')
 
+vim.o.clipboard = "unnamedplus"
+vim.o.updatetime = 100
+
 vim.scriptencoding = 'utf-8'
 opt.encoding = 'utf-8'
 opt.fileencoding = 'utf-8'
@@ -60,11 +63,5 @@ opt.listchars = { tab = '»·', trail = '·', precedes = '', extends = '' 
 -- Undercurl
 vim.cmd([[let &t_Cs = '\e[4:3m']])
 vim.cmd([[let &t_Ce = '\e[4:0m']])
-
--- Turn off paste mode when leaving insert mode
-vim.api.nvim_create_autocmd("InsertLeave", {
-	pattern = '*',
-	command = 'set nopaste'
-})
 
 opt.formatoptions:append { 'r' }
