@@ -37,4 +37,4 @@ keymap('n', '<leader>ba', ':%bd|e#|bd#<cr>', noremap)
 
 -- Terminal
 keymap('n', '<leader>tt', ':term<cr>', noremap)
-keymap('t', '<leader>tt', '<C-\\><C-n>', noremap)
+keymap('t', 'tt', '<C-\\><C-n>', noremap)

@@ -17,7 +17,7 @@ telescope.setup {
 				['q'] = actions.close
 			}
 		},
-		initial_mode = 'normal',
+		initial_mode = 'insert',
 		hidden = true,
 		file_ignore_patterns = { '.git/', 'node_modules/' }
 	},

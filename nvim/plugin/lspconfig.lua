@@ -15,8 +15,6 @@ local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
 	vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 
-	print(vim.inspect(client.server_capabilities))
-
 	-- Formatting
 	if (client.name ~= 'volar' and client.server_capabilities.documentFormattingProvider) then
 		vim.api.nvim_command [[ augroup Format ]]
