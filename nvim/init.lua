@@ -1,4 +1,5 @@
 require('base')
 require('highlights')
 require('keymaps')
+require('autocmd')
 require('plugins')

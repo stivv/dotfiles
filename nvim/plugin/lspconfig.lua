@@ -2,8 +2,6 @@ local ok, lspconfig = pcall(require, 'lspconfig')
 
 if not ok then return end
 
-local protocol = require('vim.lsp.protocol')
-
 local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
@@ -44,73 +42,34 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 }
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-lspconfig.tsserver.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
-	filetypes = { 'typescript', 'typescript.tsx' },
-	cmd = { 'typescript-language-server', '--stdio' }
-}
+local servers = { 'volar', 'eslint', 'tsserver', 'jsonls', 'emmet_ls', 'html', 'tailwindcss', 'intelephense',
+	'rust_analyzer', 'sumneko_lua' }
 
-lspconfig.volar.setup {
-	capabilities = capabilities,
-	filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
-}
-
--- npm i -g eslint
-lspconfig.eslint.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
-})
-
-lspconfig.jsonls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
--- npm install -g emmet-ls
-lspconfig.emmet_ls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
--- npm i -g vscode-langservers-extracted
-lspconfig.html.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-lspconfig.tailwindcss.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
-
-lspconfig.intelephense.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
-}
-
-lspconfig.rust_analyzer.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
-}
-
-lspconfig.sumneko_lua.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
-	settings = {
-		Lua = {
-			diagnostics = {
-				globals = { 'vim' },
-			},
-			workspace = {
-				-- Make the server aware of nvim runtime files
-				library = vim.api.nvim_get_runtime_file('', true),
-				checkThirdParty = false,
-			},
-			telemetry = {
-				enable = false,
-			},
+for _, server in ipairs(servers) do
+	lspconfig[server].setup {
+		on_attach = on_attach,
+		capabilities = capabilities,
+		settings = {
+			Lua = {
+				diagnostics = {
+					globals = { 'vim' },
+				},
+				workspace = {
+					-- Make the server aware of nvim runtime files
+					library = vim.api.nvim_get_runtime_file('', true),
+					checkThirdParty = false,
+				},
+				telemetry = {
+					enable = false,
+				},
+			}
 		}
 	}
-}
+end
+
+require 'lsp_signature'.setup({
+	bind = true, -- This is mandatory, otherwise border config won't get registered.
+	handler_opts = {
+		border = "rounded"
+	}
+})
