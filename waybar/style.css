@@ -1,6 +1,6 @@
 * {
 	border: none;
-  font-family: "FiraCode Medium";
+  font-family: "CaskaydiaCove Nerd Font";
   font-weight: bold;
 	min-height: 5px;
 }
@@ -103,15 +103,15 @@ window#waybar.hidden {
 }
 
 #custom-power {
-	font-size: 13px;
+	font-size: 16px;
 	color: #161320;
 	/* background: #F28FAD; */
 }
 
 #tags button {
-	font-size: 22px;
+	font-size: 13px;
 	padding: 0px;
-	margin: 0px 10px;
+	margin: 0px 8px;
 	color: #bd93f9;
 	font-weight: bolder;
 }
@@ -124,11 +124,11 @@ window#waybar.hidden {
 
 #tags button.focused.occupied, #tags button.focused {
 	color: #ff9900;
-	font-size: 24px;
+	font-size: 18px;
 }
 
 #tags button.occupied {
 	color: #89DCEB;
-	font-size: 24px;
+	font-size: 17px;
 }
 
