@@ -1,16 +1,23 @@
-vim.cmd('autocmd!')
-
 local opt = vim.opt
-local wo = vim.wo
 
-vim.g.mapleader = " "
--- vim.notify = require('notify')
+opt.syntax = 'ON'
+opt.number = true
+opt.relativenumber = true
+opt.signcolumn     = 'auto'
 
-vim.scriptencoding = 'utf-8'
-opt.encoding = 'utf-8'
-opt.fileencoding = 'utf-8'
+opt.smarttab    = true
+opt.shiftwidth  = 2
+opt.tabstop     = 2
+opt.softtabstop = 2
+opt.autoindent  = true
+opt.breakindent = true
 
-opt.title = true
+opt.cursorline = true
+opt.termguicolors = true
+opt.winblend = 0
+opt.wildoptions = 'pum'
+opt.pumblend = 5
+opt.background = 'dark'
 
 opt.undofile   = true
 opt.swapfile   = false
@@ -26,29 +33,6 @@ opt.splitbelow = true
 opt.splitright = true
 opt.wrap       = false
 opt.scrolloff  = 5
-
-opt.relativenumber = true
-opt.cursorline     = true
-opt.signcolumn     = 'auto'
-
-opt.hidden      = true
-opt.completeopt = 'menuone,noselect'
-opt.mouse       = 'a'
-
-opt.smarttab    = true
-opt.shiftwidth  = 2
-opt.tabstop     = 2
-opt.softtabstop = 2
-opt.autoindent  = true
-opt.breakindent = true
-
-opt.showcmd    = true
-opt.cmdheight  = 1
-opt.laststatus = 2
-vim.o.shell    = '/bin/zsh'
-
-opt.backupskip = '/tmp/*,/private/tmp/*'
-opt.inccommand = 'split'
 
 opt.backspace = 'start,eol,indent'
 opt.path:append { '**' } -- search include subfolders

@@ -1,60 +1,118 @@
-local ok, packer = pcall(require, 'packer')
-
-if (not ok) then
-	print("packer not installed")
-	return
+-- Install packer
+local ensure_packer = function()
+	local fn = vim.fn
+	local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+	if fn.empty(fn.glob(install_path)) > 0 then
+		fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+		vim.cmd [[packadd packer.nvim]]
+		return true
+	end
+	return false
 end
 
-vim.cmd([[packadd packer.nvim]])
+local packer_bootstrap = ensure_packer()
 
-packer.startup(function(use)
-	use 'wbthomason/packer.nvim'
+-- Initialize packer
+require('packer').init({
+	compile_path = vim.fn.stdpath('data') .. '/site/plugin/packer_compiled.lua',
+	display = {
+		open_fn = function()
+			return require('packer.util').float({ border = 'solid' })
+		end,
+	},
+})
 
-	use 'kyazdani42/nvim-web-devicons'
-	use 'nvim-lua/plenary.nvim'
-	use 'norcalli/nvim-colorizer.lua'
-	use 'lewis6991/gitsigns.nvim'
-	use 'rcarriga/nvim-notify'
-	use 'numToStr/Comment.nvim'
-	use 'akinsho/toggleterm.nvim'
+-- Install plugins
+local use = require('packer').use
 
-	use 'navarasu/onedark.nvim'
-	use 'tjdevries/colorbuddy.nvim'
-	use { "catppuccin/nvim", as = "catppuccin" }
+use('wbthomason/packer.nvim') -- Let packer manage itself
 
-	use 'nvim-lualine/lualine.nvim'
+use 'lewis6991/impatient.nvim'
 
-	-- LSP
-	use 'neovim/nvim-lspconfig'
-	use 'glepnir/lspsaga.nvim'
-	use 'jose-elias-alvarez/null-ls.nvim'
-	use 'williamboman/mason.nvim'
-	use 'williamboman/mason-lspconfig.nvim'
-	use 'MunifTanjim/prettier.nvim'
+-- Colorscheme
+use { 'navarasu/onedark.nvim', config = require 'p/colorscheme' }
 
-	-- CMP
-	use 'hrsh7th/nvim-cmp'
-	use 'hrsh7th/cmp-nvim-lsp'
-	use 'hrsh7th/cmp-path'
-	use 'hrsh7th/cmp-buffer'
-	use {
-		"L3MON4D3/LuaSnip",
-		requires = { "rafamadriz/friendly-snippets" },
-	}
-	use 'saadparwaiz1/cmp_luasnip'
-	use 'onsails/lspkind-nvim'
-	use 'ray-x/lsp_signature.nvim'
+-- Treesitter
+use {
+	'nvim-treesitter/nvim-treesitter',
+	run = function()
+		local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+		ts_update()
+	end,
+	config = require 'p/treesitter'
+}
+use { 'windwp/nvim-autopairs', config = require 'p.autopairs' }
+use { 'windwp/nvim-ts-autotag', config = require 'p.autotag' }
 
-	-- Treesitter
-	use {
-		'nvim-treesitter/nvim-treesitter',
-		run = 'TSUpdate'
-	}
-	use 'windwp/nvim-autopairs'
-	use 'windwp/nvim-ts-autotag'
+-- LSP/Completions
+use { 'neovim/nvim-lspconfig', config = require 'p.lspconfig' }
+use { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' }
+use {
+	'kosayoda/nvim-lightbulb',
+	requires = 'antoinemadec/FixCursorHold.nvim',
+}
+use({
+	'hrsh7th/nvim-cmp',
+	requires = {
+		'L3MON4D3/LuaSnip',
+		'hrsh7th/cmp-buffer',
+		'hrsh7th/cmp-cmdline',
+		'hrsh7th/cmp-nvim-lsp',
+		'hrsh7th/cmp-nvim-lsp-signature-help',
+		'hrsh7th/cmp-nvim-lua',
+		'onsails/lspkind-nvim',
+		'glepnir/lspsaga.nvim',
+		'saadparwaiz1/cmp_luasnip',
+		'ray-x/lsp_signature.nvim',
+		'rafamadriz/friendly-snippets',
+	},
+	config = function()
+		require 'p/cmp'
+		require 'p.luasnip'
+		require 'p.lspsaga'
+	end,
+})
 
-	-- Telescope
-	use 'nvim-telescope/telescope.nvim'
-	use 'nvim-telescope/telescope-file-browser.nvim'
+-- Bufferline
+use({
+	'akinsho/bufferline.nvim',
+	requires = 'kyazdani42/nvim-web-devicons',
+	after = 'onedark.nvim',
+	config = require 'p.bufferline'
+})
 
-end)
+-- lualine
+use({
+	'nvim-lualine/lualine.nvim',
+	requires = 'kyazdani42/nvim-web-devicons',
+	config = require 'p.lualine',
+})
+
+-- Floaterm
+use({ 'voldikss/vim-floaterm', config = require 'p.floaterm' })
+
+-- Telescope
+use({
+	'nvim-telescope/telescope.nvim',
+	requires = {
+		{ 'nvim-lua/plenary.nvim' },
+		{ 'kyazdani42/nvim-web-devicons' },
+		{ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+		{ 'nvim-telescope/telescope-live-grep-args.nvim' },
+		{ 'nvim-telescope/telescope-file-browser.nvim' },
+	},
+	config = require 'p.telescope'
+})
+
+use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
+
+-- Automatically install plugins on first run
+if packer_bootstrap then require('packer').sync() end
+
+-- Automatically regenerate compiled loader file on save
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile>
+  augroup end
+]])

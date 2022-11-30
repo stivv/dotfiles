@@ -24,11 +24,10 @@ keymap('v', '>', '>gv', noremap)
 keymap('n', '<leader>gf', ':edit <cfile><cr>', {})
 
 -- Select all
-keymap('n', '<C-a>', 'gg<S-v>G', noremap)
+keymap('n', '<C-a>', 'ggVG', noremap)
 
 -- Terminal
 keymap('n', '<leader>tt', ':term<cr>', noremap)
-keymap('t', 'tt', '<C-\\><C-n>', noremap)
 keymap('t', '<C-t>', '<C-\\><C-n>', noremap)
 
 -- Buffers
