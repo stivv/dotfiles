@@ -46,6 +46,7 @@ use { 'windwp/nvim-ts-autotag', config = require 'p.autotag' }
 
 -- LSP/Completions
 use { 'neovim/nvim-lspconfig', config = require 'p.lspconfig' }
+use { 'williamboman/mason.nvim', config = require 'p.mason' }
 use { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' }
 use {
 	'kosayoda/nvim-lightbulb',
@@ -104,7 +105,11 @@ use({
 	config = require 'p.telescope'
 })
 
+-- Comments
 use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
+
+-- Gitsigns
+use { 'lewis6991/gitsigns.nvim', config = require 'p.gitsigns' }
 
 -- Automatically install plugins on first run
 if packer_bootstrap then require('packer').sync() end
