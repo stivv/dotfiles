@@ -68,7 +68,7 @@ use({
 		'rafamadriz/friendly-snippets',
 	},
 	config = function()
-		require 'p/cmp'
+		require 'p.cmp'
 		require 'p.luasnip'
 		require 'p.lspsaga'
 	end,
@@ -110,6 +110,9 @@ use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() en
 
 -- Gitsigns
 use { 'lewis6991/gitsigns.nvim', config = require 'p.gitsigns' }
+
+-- Neoscroll
+use { 'karb94/neoscroll.nvim', config = require 'p.neoscroll' }
 
 -- Automatically install plugins on first run
 if packer_bootstrap then require('packer').sync() end

@@ -8,24 +8,6 @@ local lspkind = require('lspkind')
 vim.o.completeopt = 'menuone,longest,preview'
 
 cmp.setup({
-	experimental = {
-		ghost_text = true,
-	},
-	formatting = {
-		format = lspkind.cmp_format({
-			with_text = true,
-			-- menu = {
-			-- 	nvim_lsp = '[LSP]',
-			-- 	nvim_lua = '[Lua]',
-			-- 	buffer = '[BUF]',
-			-- },
-		}),
-	},
-	snippet = {
-		expand = function(args)
-			require('luasnip').lsp_expand(args.body)
-		end,
-	},
 	mapping = {
 		['<C-p>'] = cmp.mapping.select_prev_item(),
 		['<C-n>'] = cmp.mapping.select_next_item(),
@@ -48,11 +30,31 @@ cmp.setup({
 		end, { 'i', 's' }),
 	},
 	sources = {
+		{ name = 'luasnip' },
 		{ name = 'nvim_lsp' },
 		{ name = 'nvim_lsp_signature_help' },
 		{ name = 'nvim_lua' },
-		{ name = 'luasnip' },
 		{ name = 'path' },
 		{ name = 'buffer' },
+	},
+	snippet = {
+		expand = function(args)
+			require('luasnip').lsp_expand(args.body)
+		end,
+	},
+	formatting = {
+		format = lspkind.cmp_format({
+			with_text = true,
+			menu = {
+				nvim_lsp = '[LSP]',
+				nvim_lua = '[Lua]',
+				buffer = '[BUF]',
+				luasnip = '[SNIP]',
+				path = '[PATH]',
+			},
+		}),
+	},
+	experimental = {
+		ghost_text = true,
 	},
 })
