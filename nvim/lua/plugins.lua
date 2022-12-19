@@ -47,7 +47,6 @@ use { 'windwp/nvim-ts-autotag', config = require 'p.autotag' }
 -- LSP/Completions
 use { 'neovim/nvim-lspconfig', config = require 'p.lspconfig' }
 use { 'williamboman/mason.nvim', config = require 'p.mason' }
-use { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' }
 use {
 	'kosayoda/nvim-lightbulb',
 	requires = 'antoinemadec/FixCursorHold.nvim',

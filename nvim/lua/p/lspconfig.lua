@@ -26,13 +26,18 @@ return function()
 	local on_attach = function(client, bufnr)
 		vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-		vim.keymap.set('n', '<leader>ca', ':CodeActionMenu<CR>')
-		vim.keymap.set('v', '<leader>ca', ':CodeActionMenu<CR>')
+		local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
-		vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', { buffer = bufnr })
-		vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', { buffer = bufnr })
-		vim.keymap.set('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { buffer = bufnr })
-
+		vim.keymap.set('n', '<C-j>', '<Cmd>Lspsaga diagnostic_jump_next<cr>', bufopts)
+		vim.keymap.set('n', '<C-k>', '<Cmd>Lspsaga diagnostic_jump_prev<cr>', bufopts)
+		vim.keymap.set('n', 'K', '<Cmd>Lspsaga hover_doc<cr>', bufopts)
+		vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, bufopts)
+		vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+		vim.keymap.set('n', '<leader>gr', '<Cmd>Lspsaga lsp_finder<cr>', bufopts)
+		vim.keymap.set('n', '<leader>gp', '<Cmd>Lspsaga peek_definition<cr>', bufopts)
+		vim.keymap.set('n', '<leader>r', '<Cmd>Lspsaga rename<cr>', bufopts)
+		vim.keymap.set('n', '<leader>e', '<Cmd>Lspsaga show_line_diagnostics<cr>', bufopts)
+		vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 
 		require 'lsp_signature'.on_attach({
 			bind = true, -- This is mandatory, otherwise border config won't get registered.
