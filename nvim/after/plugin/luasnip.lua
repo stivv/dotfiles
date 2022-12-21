@@ -61,10 +61,6 @@ ls.add_snippets('php', {
 	ls.parser.parse_snippet('testa', '/** @test */\npublic function $1()\n{\n    $0\n}'),
 })
 
-ls.add_snippets('typescript', {
-	ls.parser.parse_snippet('import', "import $1 from '$0'"),
-})
-
 ls.add_snippets('vue', {
-	ls.parser.parse_snippet('defineProps', 'defineProps<{\n  $0\n}>()'),
+	ls.parser.parse_snippet('import', "import $1 from '$0'"),
 })

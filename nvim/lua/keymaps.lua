@@ -1,37 +1,40 @@
+-- [[ Basic Keymaps ]]
+-- Set <space> as the leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 -- Keymaps
-local keymap = vim.api.nvim_set_keymap
 local noremap = { noremap = true, silent = true }
 
--- Leader key to spacebar
-vim.g.mapleader = " "
+-- Keymaps for better default experience
+-- See `:help vim.keymap.set()`
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
--- Quickly edit init.lua file
-keymap('n', '<leader>ve', ':edit ~/.config/nvim/init.lua', {})
+-- Remap for dealing with word wrap
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- Quicker switching between windows
-keymap('n', '<c-h>', '<c-w>h', noremap)
-keymap('n', '<c-j>', '<c-w>j', noremap)
-keymap('n', '<c-k>', '<c-w>k', noremap)
-keymap('n', '<c-l>', '<c-w>l', noremap)
-
-keymap('i', 'jj', '<ESC>', noremap)
+-- Exit insert mode remap
+vim.keymap.set('i', 'jj', '<ESC>')
 
 -- Reselect visual selection after indenting
-keymap('v', '<', '<gv', noremap)
-keymap('v', '>', '>gv', noremap)
+vim.keymap.set('v', '<', '<gv', noremap)
+vim.keymap.set('v', '>', '>gv', noremap)
 
 -- Switch to and edit files ( existing or not :) ) quickly
-keymap('n', '<leader>gf', ':edit <cfile><cr>', {})
+vim.keymap.set('n', '<leader>gf', ':edit <cfile><cr>', {})
 
 -- Select all
-keymap('n', '<C-a>', 'ggVG', noremap)
+vim.keymap.set('n', '<C-a>', 'ggVG', noremap)
 
 -- Terminal
-keymap('n', '<leader>tt', ':term<cr>', noremap)
-keymap('t', '<C-t>', '<C-\\><C-n>', noremap)
+vim.keymap.set('n', '<leader>tt', ':term<cr>', noremap)
+vim.keymap.set('t', '<C-t>', '<C-\\><C-n>', noremap)
 
 -- Buffers
-keymap('n', '<leader>l', ':bn<cr>', noremap)
-keymap('n', '<leader>h', ':bp<cr>', noremap)
-keymap('n', '<leader>bc', ':bd!<cr>', noremap)
-keymap('n', '<leader>ba', ':%bd|e#|bd#<cr>', noremap)
+vim.keymap.set('n', '<leader>l', ':bn<cr>', noremap)
+vim.keymap.set('n', '<leader>h', ':bp<cr>', noremap)
+vim.keymap.set('n', '<leader>bc', ':bd!<cr>', noremap)
+vim.keymap.set('n', '<leader>ba', ':%bd|e#|bd#<cr>', noremap)

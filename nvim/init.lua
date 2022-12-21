@@ -1,5 +1,4 @@
-pcall(require, 'impatient')
 require('plugins')
-require('base')
+require('options')
 require('keymaps')
 require('autocmds')
