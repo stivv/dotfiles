@@ -4,7 +4,10 @@ if not ok then return end
 
 onedark.setup {
   style = 'darker',
+  transparent = true,
   highlights = {
+    StatusLine             = { fg = '$fg', bg = '$bg_d' },
+    StatusLineNonText      = { fg = '$fg', bg = '$bg_d' },
     Floaterm               = { fg = '$fg', bg = '$bg1' },
     FloatermBorder         = { fg = '$bg1', bg = '$bg1' },
     TelescopePromptBorder  = { fg = '$bg1', bg = '$bg1' },
@@ -28,9 +31,3 @@ onedark.setup {
 
 
 onedark.load()
-
--- Make the StatusLineNonText background the same as StatusLine
-vim.api.nvim_set_hl(0, 'StatusLineNonText', {
-  fg = vim.api.nvim_get_hl_by_name('NonText', true).foreground,
-  bg = vim.api.nvim_get_hl_by_name('StatusLine', true).background,
-})
