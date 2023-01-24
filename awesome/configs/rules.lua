@@ -14,7 +14,7 @@ function M.setup(awful, beautiful, gears, modkey, wibox)
 				keys = require('configs.keybinds').clientkeys(awful, gears, modkey),
 				buttons = require('configs.keybinds').clientbuttons(awful, gears, modkey),
 				screen = awful.screen.preferred,
-				placement = awful.placement.no_overlap + awful.placement.no_offscreen
+				placement = awful.placement.no_overlap + awful.placement.no_offscreen,
 			}
 		},
 
@@ -67,6 +67,10 @@ function M.setup(awful, beautiful, gears, modkey, wibox)
 		-- Set the windows at the slave,
 		-- i.e. put it at the end of others instead of setting it master.
 		-- if not awesome.startup then awful.client.setslave(c) end
+		c.shape = function(cr, width, height)
+			gears.shape.rounded_rect(cr, width, height, 13)
+		end
+		c.shape_bounding = gears.shape.rect
 
 		if awesome.startup
 				and not c.size_hints.user_position

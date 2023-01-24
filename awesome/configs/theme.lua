@@ -13,8 +13,8 @@ local theme = {}
 
 theme.font = "FiraCode Nerd Font Bold 9"
 
-theme.bg_normal   = "#0b152e"
-theme.bg_focus    = "#0b152e"
+theme.bg_normal   = "#000000"
+theme.bg_focus    = "#000000"
 theme.bg_urgent   = "#ff0000"
 theme.bg_minimize = "#444444"
 theme.bg_systray  = theme.bg_normal
@@ -25,10 +25,10 @@ theme.fg_urgent   = "#ffffff"
 theme.fg_minimize = "#ffffff"
 
 theme.useless_gap   = dpi(0)
-theme.border_width  = dpi(1)
-theme.border_normal = "#000000"
-theme.border_focus  = "#535d6c"
-theme.border_marked = "#91231c"
+theme.border_width  = dpi(5)
+theme.border_normal = "#30313A"
+theme.border_focus  = "#30313A"
+theme.border_marked = "#30313A"
 
 -- There are other variable sets
 -- overriding the default one when
@@ -44,7 +44,7 @@ theme.border_marked = "#91231c"
 --theme.taglist_bg_focus = "#ff0000"
 
 -- Generate taglist squares:
-local taglist_square_size = dpi(4)
+local taglist_square_size = dpi(0)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
     taglist_square_size, theme.fg_normal
 )
@@ -97,7 +97,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path .. "default/titleb
 theme.titlebar_maximized_button_normal_active   = themes_path .. "default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active    = themes_path .. "default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "~/Pictures/stripes.jpg" --themes_path .. "default/background.png"
+theme.wallpaper = "~/.config/awesome/configs/wallpapers/dark.png"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh      = themes_path .. "default/layouts/fairhw.png"

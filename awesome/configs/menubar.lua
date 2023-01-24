@@ -88,7 +88,7 @@ function M.setup(awful, beautiful, gears, menubar, wibox)
 		set_wallpaper(s)
 
 		-- Each screen has its own tag table.
-		local names = { 'code', 'terminal', 'www', 'messages', 'others' }
+		local names = { ' ', ' ', ' ', ' ', '' }
 		local l = awful.layout.suit
 		local layouts = { l.tile, l.tile, l.max, l.tile, l.max }
 
@@ -108,7 +108,8 @@ function M.setup(awful, beautiful, gears, menubar, wibox)
 		s.mytaglist = awful.widget.taglist {
 			screen  = s,
 			filter  = awful.widget.taglist.filter.all,
-			buttons = taglist_buttons
+			buttons = taglist_buttons,
+			layout  = { spacing = beautiful.xresources.apply_dpi(10), layout = wibox.layout.fixed.vertical },
 		}
 
 		-- Create a tasklist widget
@@ -119,20 +120,33 @@ function M.setup(awful, beautiful, gears, menubar, wibox)
 		}
 
 		-- Create the wibox
-		s.mywibox = awful.wibar({ position = "top", screen = s })
+		s.mywibox = awful.wibar({
+			position = "left",
+			screen = s,
+			width = 30,
+			border_width = beautiful.border_width,
+			border_color = beautiful.border_normal,
+			shape = function(cr, width, height)
+				gears.shape.rounded_rect(cr, width, height, 14)
+			end,
+			shape_bounding = function(cr, width, height)
+				gears.shape.rounded_rect(cr, width, height, 14)
+			end,
+		})
 
 		-- Add widgets to the wibox
 		s.mywibox:setup {
-			layout = wibox.layout.align.horizontal,
+			layout = wibox.layout.align.vertical,
 			{ -- Left widgets
-				layout = wibox.layout.fixed.horizontal,
+				layout = wibox.layout.fixed.vertical,
 				-- mylauncher,
 				s.mytaglist,
 				s.mypromptbox,
 			},
 			s.mytasklist, -- Middle widget
 			{ -- Right widgets
-				layout = wibox.layout.fixed.horizontal,
+				layout = wibox.layout.fixed.vertical,
+				spacing = beautiful.xresources.apply_dpi(10),
 				mykeyboardlayout,
 				wibox.widget.systray(),
 				mytextclock,
