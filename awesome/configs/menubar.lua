@@ -26,7 +26,10 @@ function M.setup(awful, beautiful, gears, menubar, wibox)
 
 	-- {{{ Wibar
 	-- Create a textclock widget
-	mytextclock = wibox.widget.textclock()
+	clockDay = wibox.widget.textclock('%a')
+	clockDate = wibox.widget.textclock('%b %d')
+	clockHr = wibox.widget.textclock('%H')
+	clockMin = wibox.widget.textclock('%M')
 
 	-- Create a wibox for each screen and add it
 	local taglist_buttons = gears.table.join(
@@ -126,12 +129,12 @@ function M.setup(awful, beautiful, gears, menubar, wibox)
 			width = 30,
 			border_width = beautiful.border_width,
 			border_color = beautiful.border_normal,
-			shape = function(cr, width, height)
-				gears.shape.rounded_rect(cr, width, height, 14)
-			end,
-			shape_bounding = function(cr, width, height)
-				gears.shape.rounded_rect(cr, width, height, 14)
-			end,
+			-- shape = function(cr, width, height)
+			-- 	gears.shape.rounded_rect(cr, width, height, 14)
+			-- end,
+			-- shape_bounding = function(cr, width, height)
+			-- 	gears.shape.rounded_rect(cr, width, height, 14)
+			-- end,
 		})
 
 		-- Add widgets to the wibox
@@ -146,10 +149,12 @@ function M.setup(awful, beautiful, gears, menubar, wibox)
 			s.mytasklist, -- Middle widget
 			{ -- Right widgets
 				layout = wibox.layout.fixed.vertical,
-				spacing = beautiful.xresources.apply_dpi(10),
-				mykeyboardlayout,
+				spacing = beautiful.xresources.apply_dpi(4),
+				clockDay,
+				clockDate,
+				clockHr,
+				clockMin,
 				wibox.widget.systray(),
-				mytextclock,
 				s.mylayoutbox,
 			},
 		}
