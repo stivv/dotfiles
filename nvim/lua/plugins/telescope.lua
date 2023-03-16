@@ -16,11 +16,13 @@ return {
     cmd = "Telescope",
     -- stylua: ignore
     keys = {
-      { "<leader><space>", require("utils").find_files, desc = "Find Files" },
-      { "<leader>ff", require("utils").find_files, desc = "Find Files" },
+    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
+    { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+    { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Git Files" },
+    { "<leader>f/", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
       { "<leader>fo", "<cmd>Telescope frecency theme=dropdown previewer=false<cr>", desc = "Recent" },
-      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-      { "<leader>fr", "<cmd>Telescope file_browser<cr>", desc = "Browser" },
+      { "<leader>nt", "<cmd>Telescope file_browser<cr>", desc = "Browser" },
       { "<leader>ps", "<cmd>Telescope repo list<cr>", desc = "Search" },
       { "<leader>hs", "<cmd>Telescope help_tags<cr>", desc = "Search" },
       { "<leader>pp", function() require("telescope").extensions.project.project { display_type = "minimal" } end, desc = "List", },
