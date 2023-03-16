@@ -30,7 +30,16 @@ function M.on_attach(client, buf)
       buffer = buf,
       callback = function()
         if M.autoformat then
-          M.format()
+          if client.name ~= "volar" and client.server_capabilities.documentFormattingProvider then
+            vim.api.nvim_command [[ augroup Format ]]
+            vim.api.nvim_command [[ autocmd! * <buffer> ]]
+            vim.api.nvim_command [[ autocmd BufWritePre <buffer> lua M.format() ]]
+            vim.api.nvim_command [[ augroup END ]]
+          end
+
+          if client.name == "eslint" then
+            vim.api.nvim_command [[ autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js,*.vue EslintFixAll ]]
+          end
         end
       end,
     })
