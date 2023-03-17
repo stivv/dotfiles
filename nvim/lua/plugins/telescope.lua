@@ -1,113 +1,200 @@
 return {
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = {
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-      "nvim-telescope/telescope-file-browser.nvim",
-      "nvim-telescope/telescope-project.nvim",
-      "ahmedkhalf/project.nvim",
-      "cljoly/telescope-repo.nvim",
-      "stevearc/aerial.nvim",
-      "nvim-telescope/telescope-frecency.nvim",
-      "kkharji/sqlite.lua",
-      "aaronhallaert/advanced-git-search.nvim",
-      "benfowler/telescope-luasnip.nvim",
-    },
-    cmd = "Telescope",
-    -- stylua: ignore
-    keys = {
-    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
-    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-    { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-    { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Git Files" },
-    { "<leader>f/", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
-      { "<leader>fo", "<cmd>Telescope frecency theme=dropdown previewer=false<cr>", desc = "Recent" },
-      { "<leader>nt", "<cmd>Telescope file_browser<cr>", desc = "Browser" },
-      { "<leader>ps", "<cmd>Telescope repo list<cr>", desc = "Search" },
-      { "<leader>hs", "<cmd>Telescope help_tags<cr>", desc = "Search" },
-      { "<leader>pp", function() require("telescope").extensions.project.project { display_type = "minimal" } end, desc = "List", },
-      { "<leader>sw", "<cmd>Telescope live_grep<cr>", desc = "Workspace" },
-      { "<leader>ss", "<cmd>Telescope luasnip<cr>", desc = "Snippets" },
-      { "<leader>sb", function() require("telescope.builtin").current_buffer_fuzzy_find() end, desc = "Buffer", },
-      { "<leader>vo", "<cmd>Telescope aerial<cr>", desc = "Code Outline" },
-      { "<leader>zc", function() require("telescope.builtin").colorscheme({enable_preview = true}) end, desc = "Colorscheme", },
-    },
-    config = function(_, _)
-      local telescope = require "telescope"
-      local icons = require "config.icons"
-      local actions = require "telescope.actions"
-      local actions_layout = require "telescope.actions.layout"
-      local mappings = {
-        i = {
-          ["<C-j>"] = actions.move_selection_next,
-          ["<C-k>"] = actions.move_selection_previous,
-          ["<C-n>"] = actions.cycle_history_next,
-          ["<C-p>"] = actions.cycle_history_prev,
-          ["?"] = actions_layout.toggle_preview,
-        },
-      }
+	'nvim-telescope/telescope.nvim',
+	branch = '0.1.x',
+	dependencies = {
+		'nvim-lua/plenary.nvim',
+		{ "nvim-telescope/telescope-file-browser.nvim" },
+		{ 'nvim-telescope/telescope-fzf-native.nvim',  build = 'make', cond = vim.fn.executable 'make' == 1 },
+	},
+	cmd = "Telescope",
+	-- stylua: ignore
+	keys = {
+		{
+			"<leader>ff",
+			"<cmd>Telescope find_files<cr>",
+			desc =
+			"Find Files"
+		},
+		{
+			"<leader>fr",
+			"<cmd>Telescope oldfiles<cr>",
+			desc =
+			"Recent"
+		},
+		{
+			"<leader>fb",
+			"<cmd>Telescope buffers<cr>",
+			desc =
+			"Buffers"
+		},
+		{
+			"<leader>fg",
+			"<cmd>Telescope git_files<cr>",
+			desc =
+			"Git Files"
+		},
+		{
+			"<leader>f/",
+			"<cmd>Telescope live_grep<cr>",
+			desc =
+			"Grep"
+		},
+		{
+			"<leader>fo",
+			"<cmd>Telescope frecency theme=dropdown previewer=false<cr>",
+			desc =
+			"Recent"
+		},
+		{
+			"<leader>nt",
+			"<cmd>Telescope file_browser<cr>",
+			desc =
+			"Browser"
+		},
+		{
+			"<leader>ps",
+			"<cmd>Telescope repo list<cr>",
+			desc =
+			"Search"
+		},
+		{
+			"<leader>hs",
+			"<cmd>Telescope help_tags<cr>",
+			desc =
+			"Search"
+		},
+		{
+			"<leader>pp",
+			function() require("telescope").extensions.project.project { display_type = "minimal" } end,
+			desc =
+			"List",
+		},
+		{
+			"<leader>sw",
+			"<cmd>Telescope live_grep<cr>",
+			desc =
+			"Workspace"
+		},
+		{
+			"<leader>ss",
+			"<cmd>Telescope luasnip<cr>",
+			desc =
+			"Snippets"
+		},
+		{
+			"<leader>sb",
+			function() require("telescope.builtin").current_buffer_fuzzy_find() end,
+			desc =
+			"Buffer",
+		},
+		{
+			"<leader>vo",
+			"<cmd>Telescope aerial<cr>",
+			desc =
+			"Code Outline"
+		},
+		{
+			"<leader>zc",
+			function() require("telescope.builtin").colorscheme({ enable_preview = true }) end,
+			desc =
+			"Colorscheme",
+		},
+	},
+	config = function()
+		-- [[ Configure Telescope ]]
+		-- See `:help telescope` and `:help telescope.setup()`
 
-      local opts = {
-        defaults = {
-          prompt_prefix = icons.ui.Telescope .. " ",
-          selection_caret = icons.ui.Forward .. " ",
-          mappings = mappings,
-          border = {},
-          borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-          color_devicons = true,
-        },
-        pickers = {
-          find_files = {
-            theme = "dropdown",
-            previewer = false,
-            hidden = true,
-            find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
-          },
-          git_files = {
-            theme = "dropdown",
-            previewer = false,
-          },
-          buffers = {
-            theme = "dropdown",
-            previewer = false,
-          },
-        },
-        extensions = {
-          file_browser = {
-            theme = "dropdown",
-            previewer = false,
-            hijack_netrw = true,
-            mappings = mappings,
-          },
-          project = {
-            hidden_files = false,
-            theme = "dropdown",
-          },
-        },
-      }
-      telescope.setup(opts)
-      telescope.load_extension "fzf"
-      telescope.load_extension "file_browser"
-      telescope.load_extension "project"
-      telescope.load_extension "projects"
-      telescope.load_extension "aerial"
-      telescope.load_extension "dap"
-      telescope.load_extension "frecency"
-      telescope.load_extension "luasnip"
-    end,
-  },
-  {
-    "stevearc/aerial.nvim",
-    config = true,
-  },
-  {
-    "ahmedkhalf/project.nvim",
-    config = function()
-      require("project_nvim").setup {
-        detection_methods = { "pattern", "lsp" },
-        patterns = { ".git" },
-        ignore_lsp = { "null-ls" },
-      }
-    end,
-  },
+		local ok, telescope = pcall(require, 'telescope')
+
+		if not ok then return end
+
+		local actions = require('telescope.actions')
+
+		local fb_actions = require 'telescope'.extensions.file_browser.actions
+
+		telescope.setup({
+			defaults = {
+				path_display = { truncate = 1 },
+				prompt_prefix = '   ',
+				selection_caret = '  ',
+				layout_config = {
+					prompt_position = 'top',
+				},
+				sorting_strategy = 'ascending',
+				mappings = {
+					i = {
+						['<esc>'] = actions.close,
+						['<C-Down>'] = actions.cycle_history_next,
+						['<C-Up>'] = actions.cycle_history_prev,
+					},
+				},
+				file_ignore_patterns = { '.git/' },
+			},
+			pickers = {
+				find_files = {
+					hidden = true,
+				},
+				buffers = {
+					previewer = false,
+					layout_config = {
+						width = 80,
+					},
+				},
+				oldfiles = {
+					prompt_title = 'History',
+				},
+				lsp_references = {
+					previewer = false,
+				},
+			},
+			extensions = {
+				file_browser = {
+					theme = 'dropdown',
+					hijack_netrw = true,
+					cwd_to_path = true,
+					mappings = {
+						['i'] = {
+							['C-w'] = function() vim.cmd('normal vbd') end,
+						},
+						['n'] = {
+							['N'] = fb_actions.create,
+							['h'] = fb_actions.goto_parent_dir,
+							['/'] = function()
+								vim.cmd('startinsert')
+							end
+						}
+					}
+				}
+			}
+		})
+
+		-- Enable telescope fzf native, if installed
+		pcall(telescope.load_extension, 'fzf')
+
+		-- To get telescope-file-browser loaded and working with telescope,
+		pcall(telescope.load_extension, 'file_browser')
+
+		local builtin = require('telescope.builtin')
+
+		-- See `:help telescope.builtin`
+		vim.keymap.set('n', '<leader>/', function()
+			-- You can pass additional configuration to telescope to change theme, layout, etc.
+			builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+				winblend = 10,
+				previewer = false,
+			})
+		end, { desc = '[/] Fuzzily search in current buffer]' })
+
+		vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[ ] Find existing buffers' })
+		vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[S]earch [F]iles' })
+		vim.keymap.set('n', '<leader>fh', builtin.oldfiles, { desc = '[?] Find recently opened files' })
+		vim.keymap.set('n', '<leader>ft', builtin.help_tags, { desc = '[S]earch [H]elp' })
+		vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
+		vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+		vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+
+		-- File browser
+		vim.keymap.set('n', '<leader>nt',
+			'<cmd>Telescope file_browser path=%:p:h previewer=false initial_mode=normal height=80 <cr>', { noremap = true })
+	end
 }
