@@ -1,9 +1,6 @@
-require('options')
+require("options")
 
-
-------------------------------------------
---------- Lazy config --------------------
-------------------------------------------
+-- Lazy config
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -17,14 +14,19 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
---------------------------------------------
--------- Setting up leader key -------------
---------------------------------------------
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+-- Setting up leader key
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-require("lazy").setup("plugins", {
-	defaults = { lazy = true },
+require("lazy").setup({
+	spec = {
+		{ import = "plugins" },
+		-- { import = "plugins.extras.lang" },
+		{ import = "plugins.extras.ui" },
+		-- { import = "plugins.extras.pde" },
+		-- { import = "plugins.extras.pde.notes" },
+	},
+	defaults = { lazy = true, version = nil },
 	checker = { enabled = true },
 	change_detection = {
 		notify = false,

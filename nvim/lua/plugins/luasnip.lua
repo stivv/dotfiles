@@ -1,10 +1,13 @@
 return {
+	'L3MON4D3/LuaSnip',
+	dependencies = {
+		'saadparwaiz1/cmp_luasnip',
+		'rafamadriz/friendly-snippets',
+	},
+	event = 'InsertEnter',
 	config = function()
 		local ok, ls = pcall(require, "luasnip")
-
 		if not ok then return end
-		--
-		-- require("luasnip.loaders.from_snipmate").lazy_load()
 
 		local types = require "luasnip.util.types"
 
