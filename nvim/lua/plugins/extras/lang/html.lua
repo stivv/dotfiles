@@ -2,14 +2,15 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = function(_, opts)
-			vim.list_extend(opts.ensure_installed, { 'vue', })
+			vim.list_extend(opts.ensure_installed, { 'html' })
 		end,
 	},
 	{
 		"neovim/nvim-lspconfig",
 		opts = {
 			servers = {
-				volar = { settings = {} },
+				html = { settings = {} },
+				emmet_ls = { settings = {} },
 			},
 			setup = {},
 		},
