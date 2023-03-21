@@ -14,6 +14,9 @@ function M.setup(_, opts)
 		function(server)
 			local server_opts = servers[server] or {}
 			server_opts.capabilities = lsp_utils.capabilities()
+			-- nvim-cmp supports additional completion capabilities
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
+			server_opts.capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 			if opts.setup[server] then
 				if opts.setup[server](server, server_opts) then
 					return
