@@ -35,7 +35,7 @@ return {
 						['<C-Up>'] = actions.cycle_history_prev,
 					},
 				},
-				file_ignore_patterns = { '.git/', 'node_modules', 'public' },
+				file_ignore_patterns = { '.git/', 'node_modules', 'public', 'vendor' },
 			},
 			pickers = {
 				find_files = {
