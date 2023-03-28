@@ -2,10 +2,10 @@ return {
 	'nvim-treesitter/nvim-treesitter',
 	build = ':TSUpdate',
 	event = 'BufReadPre',
-	dependencies = {'windwp/nvim-ts-autotag'},
+	dependencies = { 'windwp/nvim-ts-autotag' },
 	config = function()
-		require'nvim-treesitter.configs'.setup {
-			ensure_installed = { 'lua', 'luadoc', 'vue', 'html', 'javascript', 'css' },
+		require 'nvim-treesitter.configs'.setup {
+			ensure_installed = { 'lua', 'luadoc', 'vue', 'html', 'javascript', 'css', 'rust' },
 			incremental_selection = {
 				enable = true,
 				keymaps = {

@@ -29,9 +29,6 @@ return {
 		for _, server in ipairs(servers) do
 			lspconfig[server].setup {
 				settings = {
-					volar = {
-						formatting = false
-					},
 					Lua = {
 						diagnostics = {
 							globals = { 'vim' },
