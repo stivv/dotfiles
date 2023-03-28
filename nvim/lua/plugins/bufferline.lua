@@ -2,7 +2,7 @@ return {
 	'akinsho/bufferline.nvim',
 	version = 'v3.*',
 	event = 'VeryLazy',
-	dependencies = { 'nvim-tree/nvim-web-devicons' },
+	--dependencies = { 'nvim-tree/nvim-web-devicons' },
 	opts = {
 		options = {
 			mode = "buffers",                 -- set to "tabs" to only show tabpages instead

@@ -28,10 +28,10 @@ return {
 				TelescopePreviewBorder = { fg = '$black1', bg = '$black1' },
 				TelescopePreviewNormal = { fg = '$fg', bg = '$black1' },
 				TelescopePreviewTitle  = { fg = '$green' },
-				['@keyword']           = { fg = '$red' },
-				['@string']            = { fg = '$green' },
-				['@function']          = { fg = '$blue', fmt = 'bold' },
-				['@function.builtin']  = { fg = '$blue' },
+				-- ['@keyword']           = { fg = '$red' },
+				-- ['@string']            = { fg = '$green' },
+				-- ['@function']          = { fg = '$blue', fmt = 'bold' },
+				-- ['@function.builtin']  = { fg = '$blue' },
 				['@tag']               = { fg = '$red' },
 				['@tag.attribute']     = { fg = '$purple' },
 				['@tag.delimiter']     = { fg = '$blue' },
@@ -42,3 +42,21 @@ return {
 		onedark.load()
 	end
 }
+
+-- return {
+-- 	'ellisonleao/gruvbox.nvim',
+-- 	lazy = false,   -- make sure we load this during startup if it is your main colorscheme
+-- 	priority = 1000, -- make sure to load this before all the other start plugins
+-- 	config = function()
+-- 		require('gruvbox').setup {
+-- 			transparent_mode = true,
+-- 		}
+--
+-- 		-- Transparent floats
+-- 		vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Normal' })
+-- 		vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
+--
+-- 		-- Set colorscheme
+-- 		vim.cmd('colorscheme gruvbox')
+-- 	end
+-- }

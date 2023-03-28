@@ -16,10 +16,3 @@ return {
 		vim.g.floaterm_wintitle = 0
 	end,
 }
-
--- `vim.lsp.handlers["textDocument/signatureHelp"]` has been overwritten by another plugin?
---
--- Either disable the other plugin or set `config.lsp.signature.enabled = false` in your **Noice** config.
---   - plugin: nvim
---   - file: /usr/local/share/nvim/runtime/lua/vim/lsp.lua
---   - line: 2318

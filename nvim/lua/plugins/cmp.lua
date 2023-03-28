@@ -20,6 +20,8 @@ return {
 
 		require("luasnip.loaders.from_vscode").lazy_load()
 
+		local select_opts = { behavior = cmp.SelectBehavior.Select }
+
 		cmp.setup {
 			snippet = {
 				expand = function(args)
@@ -27,50 +29,65 @@ return {
 				end,
 			},
 			mapping = cmp.mapping.preset.insert {
-				['<C-d>'] = cmp.mapping.scroll_docs(-4),
-				['<C-f>'] = cmp.mapping.scroll_docs(4),
+				['<C-u>'] = cmp.mapping.scroll_docs(-4),
+				['<C-d>'] = cmp.mapping.scroll_docs(4),
+				['<C-e>'] = cmp.mapping.abort(),
 				['<C-Space>'] = cmp.mapping.complete(),
 				['<CR>'] = cmp.mapping.confirm {
 					behavior = cmp.ConfirmBehavior.Replace,
 					select = true,
 				},
-				['<Tab>'] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.select_next_item()
-					elseif luasnip.expand_or_jumpable() then
-						luasnip.expand_or_jump()
+				['<C-f>'] = cmp.mapping(function(fallback)
+					if luasnip.jumpable(1) then
+						luasnip.jump(1)
 					else
 						fallback()
 					end
 				end, { 'i', 's' }),
+
+				['<C-b>'] = cmp.mapping(function(fallback)
+					if luasnip.jumpable(-1) then
+						luasnip.jump(-1)
+					else
+						fallback()
+					end
+				end, { 'i', 's' }),
+
+				['<Tab>'] = cmp.mapping(function(fallback)
+					local col = vim.fn.col('.') - 1
+
+					if cmp.visible() then
+						cmp.select_next_item(select_opts)
+					elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+						fallback()
+					else
+						cmp.complete()
+					end
+				end, { 'i', 's' }),
+
 				['<S-Tab>'] = cmp.mapping(function(fallback)
 					if cmp.visible() then
-						cmp.select_prev_item()
-					elseif luasnip.jumpable(-1) then
-						luasnip.jump(-1)
+						cmp.select_prev_item(select_opts)
 					else
 						fallback()
 					end
 				end, { 'i', 's' }),
 			},
 			sources = {
-				{ name = 'luasnip' },
-				{ name = 'nvim_lsp' },
+				{ name = 'luasnip',                keyword_length = 2 },
+				{ name = 'nvim_lsp',               keyword_length = 1 },
+				{ name = 'buffer',                 keyword_length = 3 },
 				{ name = 'nvim_lsp_signature_help' },
-				{ name = 'buffer' },
 				{ name = 'path' },
+			},
+			window = {
+				documentation = cmp.config.window.bordered()
 			},
 			formatting = {
 				format = require('lspkind').cmp_format({
 					with_text = true,
-					--   menu = {
-					--     nvim_lsp = '[LSP]',
-					--     nvim_lua = '[Lua]',
-					--     buffer = '[BUF]',
-					--     luasnip = '[SNIP]',
-					--     path = '[PATH]',
-					--   },
 				}),
+				fields = { 'menu', 'abbr', 'kind' }
 			},
 			experimental = {
 				ghost_text = true,

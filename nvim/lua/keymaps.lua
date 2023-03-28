@@ -1,32 +1,10 @@
--- [[ Basic Keymaps ]]
-local noremap = { noremap = true, silent = true }
+local mapkey = function(mode, key, cmd, opts)
+	return vim.keymap.set(mode, key, cmd, opts)
+end
 
--- Keymaps for better default experience
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+mapkey('i', 'jj', '<Esc>', { desc = 'Faster escape' })
+mapkey('n', '<C-a>', 'ggVG', { desc = 'Select all' })
 
--- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
--- Exit insert mode remap
-vim.keymap.set('i', 'jj', '<ESC>')
-
--- Reselect visual selection after indenting
-vim.keymap.set('v', '<', '<gv', noremap)
-vim.keymap.set('v', '>', '>gv', noremap)
-
--- Switch to and edit files ( existing or not :) ) quickly
-vim.keymap.set('n', '<leader>gf', ':edit <cfile><cr>', {})
-
--- Select all
-vim.keymap.set('n', '<C-a>', 'ggVG', noremap)
-
--- Terminal
-vim.keymap.set('n', '<leader>tt', ':term<cr>', noremap)
-vim.keymap.set('t', '<C-t>', '<C-\\><C-n>', noremap)
-
--- Buffers
-vim.keymap.set('n', '<leader>l', ':bn<cr>', noremap)
-vim.keymap.set('n', '<leader>h', ':bp<cr>', noremap)
-vim.keymap.set('n', '<leader>bc', ':bd!<cr>', noremap)
-vim.keymap.set('n', '<leader>ba', ':%bd|e#|bd#<cr>', noremap)
+mapkey('n', '<leader>h', '<cmd>bNext<cr>', { desc = 'Go to next buffer' })
+mapkey('n', '<leader>l', '<cmd>bprev<cr>', { desc = 'Go to previous buffer' })
+mapkey('n', '<leader>bc', '<cmd>bdelete<cr>', { desc = 'Close current buffer' })

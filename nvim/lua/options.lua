@@ -1,43 +1,16 @@
--- [[ Setting options ]]
+local opts = vim.opt
 
-local opt = vim.opt
+opts.number = true
+opts.relativenumber = true
 
--- Set highlight on search
-opt.hlsearch = false
+opts.tabstop = 2
+opts.shiftwidth = 2
 
--- Make line numbers default
-opt.number = true
-opt.relativenumber = true
+opts.background = 'dark'
+opts.termguicolors = true
 
--- Enable mouse mode
-opt.mouse = 'a'
+opts.cmdheight = 0
+opts.undofile = true
+opts.swapfile = false
 
--- Enable break indent
-opt.breakindent = true
-
--- Save undo history
-opt.undofile = true
-
--- Case insensitive searching UNLESS /C or capital in search
-opt.ignorecase = true
-opt.smartcase = true
-
--- Decrease update time
-opt.updatetime = 250
-opt.signcolumn = 'yes'
-
--- Set colorscheme
-opt.termguicolors = true
-
--- Set completeopt to have a better completion experience
-opt.completeopt = 'menuone,noselect'
-
--- Tab width
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
-opt.tabstop = 2
-opt.softtabstop = 2
-opt.shiftwidth = 2
-
--- set cmdheight
-opt.cmdheight = 0
+opts.completeopt = {'menu', 'menuone', 'noselect'}
