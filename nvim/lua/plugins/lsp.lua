@@ -88,13 +88,16 @@ return {
 
 				-- Formatting
 				vim.keymap.set('n', '<space>f', function()
-					vim.lsp.buf.format { async = true, filter = function(client) return client.name ~= "volar" end }
+					vim.lsp.buf.format { async = true, filter = function(client) return client.name ~= 'volar' and
+						client.name ~= 'tsserver' end }
 				end, opts)
 
 				vim.api.nvim_command [[ augroup Format ]]
 				vim.api.nvim_command [[ autocmd! * <buffer> ]]
 				vim.api.nvim_command [[ autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js,*.vue EslintFixAll ]]
-				vim.api.nvim_command [[ autocmd BufWritePre <buffer> lua vim.lsp.buf.format { async = false, filter = function(client) return client.name ~= "volar" end }  ]]
+				vim.api.nvim_command [[
+					autocmd BufWritePre <buffer> lua vim.lsp.buf.format { async = false, filter = function(client) return client.name ~= 'volar' and client.name ~= 'tsserver' end }
+				]]
 				vim.api.nvim_command [[ augroup END ]]
 			end,
 		})
