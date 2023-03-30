@@ -82,7 +82,7 @@ return {
 				require 'lsp_signature'.on_attach({
 					bind = true, -- This is mandatory, otherwise border config won't get registered.
 					handler_opts = {
-						border = "rounded"
+						border = false
 					}
 				}, ev.buf)
 
@@ -116,24 +116,5 @@ return {
 		sign({ text = '', name = 'DiagnosticSignWarn' })
 		sign({ text = '', name = 'DiagnosticSignInfo' })
 		sign({ text = '', name = 'DiagnosticSignHint' })
-
-		vim.diagnostic.config({
-			virtual_text = true,
-			severity_sort = false,
-			float = {
-				border = 'rounded',
-				source = 'always',
-			},
-		})
-
-		vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-			vim.lsp.handlers.hover,
-			{ border = 'rounded' }
-		)
-
-		vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-			vim.lsp.handlers.signature_help,
-			{ border = 'rounded' }
-		)
 	end
 }
