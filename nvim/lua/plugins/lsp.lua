@@ -88,8 +88,10 @@ return {
 
 				-- Formatting
 				vim.keymap.set('n', '<space>f', function()
-					vim.lsp.buf.format { async = true, filter = function(client) return client.name ~= 'volar' and
-						client.name ~= 'tsserver' end }
+					vim.lsp.buf.format { async = true, filter = function(client)
+						return client.name ~= 'volar' and
+								client.name ~= 'tsserver'
+					end }
 				end, opts)
 
 				vim.api.nvim_command [[ augroup Format ]]
