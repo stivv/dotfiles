@@ -5,7 +5,6 @@ return {
 		'hrsh7th/cmp-nvim-lsp',
 		'hrsh7th/cmp-buffer',
 		'hrsh7th/cmp-path',
-		'onsails/lspkind.nvim',
 		'L3MON4D3/LuaSnip',
 		'saadparwaiz1/cmp_luasnip',
 		'rafamadriz/friendly-snippets',
@@ -19,6 +18,34 @@ return {
 		local luasnip = require('luasnip')
 
 		require("luasnip.loaders.from_vscode").lazy_load()
+
+		local cmp_kinds = {
+			Text = '  ',
+			Method = '  ',
+			Function = '  ',
+			Constructor = '  ',
+			Field = '  ',
+			Variable = '  ',
+			Class = '  ',
+			Interface = '  ',
+			Module = '  ',
+			Property = '  ',
+			Unit = '  ',
+			Value = '  ',
+			Enum = '  ',
+			Keyword = '  ',
+			Snippet = '  ',
+			Color = '  ',
+			File = '  ',
+			Reference = '  ',
+			Folder = '  ',
+			EnumMember = '  ',
+			Constant = '  ',
+			Struct = '  ',
+			Event = '  ',
+			Operator = '  ',
+			TypeParameter = '  ',
+		}
 
 		cmp.setup {
 			snippet = {
@@ -72,13 +99,33 @@ return {
 				{ name = 'path' },
 			},
 			formatting = {
-				format = require('lspkind').cmp_format({
-					with_text = true,
-				}),
+				format = function(_, vim_item)
+					vim_item.kind = (cmp_kinds[vim_item.kind] or '') .. vim_item.kind
+					return vim_item
+				end,
 			},
 			experimental = {
 				ghost_text = true,
 			},
 		}
+
+		vim.cmd [[
+			" gray
+			highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
+			" blue
+			highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
+			highlight! link CmpItemAbbrMatchFuzzy CmpItemAbbrMatch
+			" light blue
+			highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
+			highlight! link CmpItemKindInterface CmpItemKindVariable
+			highlight! link CmpItemKindText CmpItemKindVariable
+			" pink
+			highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
+			highlight! link CmpItemKindMethod CmpItemKindFunction
+			" front
+			highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
+			highlight! link CmpItemKindProperty CmpItemKindKeyword
+			highlight! link CmpItemKindUnit CmpItemKindKeyword
+		]]
 	end
 }
