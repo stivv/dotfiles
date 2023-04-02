@@ -1,16 +1,9 @@
+local separator = { '"▏"', color = 'StatusLineNonText' }
 return {
 	'nvim-lualine/lualine.nvim',
 	event = 'VeryLazy',
-	config = function()
-		-- Set lualine as statusline
-		-- See `:help lualine.txt`
-		local ok, lualine = pcall(require, 'lualine')
-
-		if not ok then return end
-
-		local separator = { '"▏"', color = 'StatusLineNonText' }
-
-		lualine.setup({
+	opts = function()
+		return {
 			options = {
 				section_separators = '',
 				component_separators = '',
@@ -25,36 +18,25 @@ return {
 				symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
 			},
 			sections = {
-				lualine_a = {
-					'mode',
-					separator,
-				},
 				lualine_b = {
-					'filename',
-				},
-				lualine_c = {
 					separator,
 					'branch',
 					'diff',
-					separator,
-					'"  " .. tostring(#vim.tbl_keys(vim.lsp.buf_get_clients()))',
-					separator,
-					{ 'diagnostics', sources = { 'nvim_diagnostic' } },
 				},
+				lualine_c = {},
 				lualine_x = {
-					'filetype',
+					'"  " .. tostring(#vim.tbl_keys(vim.lsp.buf_get_clients()))',
+					{ 'diagnostics', sources = { 'nvim_diagnostic' } },
+					separator,
+					'filename',
 					separator,
 				},
-				lualine_y = {
-					'fileformat',
-					'encoding',
-					separator,
-				},
+				lualine_y = {},
 				lualine_z = {
 					'location',
 					'progress',
 				},
-			},
-		})
+			}
+		}
 	end
 }

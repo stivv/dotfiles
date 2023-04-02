@@ -1,5 +1,9 @@
 require("options")
 
+-- Setting up leader key
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 -- Lazy config
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -14,13 +18,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Setting up leader key
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
+		{ import = "plugins.lsp.servers" },
 	},
 	defaults = { lazy = true, version = nil },
 	checker = { enabled = true },

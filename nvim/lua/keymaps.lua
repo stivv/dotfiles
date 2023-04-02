@@ -8,8 +8,8 @@ end
 mapkey('i', 'jj', '<Esc>', { desc = 'Faster escape' })
 mapkey('n', '<C-a>', 'ggVG', { desc = 'Select all' })
 
-mapkey('n', '<leader>h', '<cmd>bn<cr>', { desc = 'Go to next buffer' })
-mapkey('n', '<leader>l', '<cmd>bp<cr>', { desc = 'Go to previous buffer' })
+mapkey('n', '<leader>h', '<cmd>bp<cr>', { desc = 'Go to previous buffer' })
+mapkey('n', '<leader>l', '<cmd>bn<cr>', { desc = 'Go to next buffer' })
 mapkey('n', '<leader>bc', '<cmd>bdelete<cr>', { desc = 'Close current buffer' })
 mapkey('n', '<leader>ba', ':%bd|e#|bd#<cr>', noremap)
 
