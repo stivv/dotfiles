@@ -1,5 +1,3 @@
--- ensure_installed = { 'lua', 'rust', 'bash', 'css', 'dockerfile', 'html', 'json', 'javascript', 'php', 'typescript',
--- 	'vue', 'help' },
 local swap_next, swap_prev = (function()
 	local swap_objects = {
 		p = "@parameter.inner",
@@ -29,7 +27,7 @@ return {
 		event = { "BufReadPost", "BufNewFile" },
 		opts = {
 			sync_install = false,
-			ensure_installed = {},
+			ensure_installed = { 'bash', 'help', 'json', 'dockerfile' },
 			highlight = {
 				enable = true,
 				additional_vim_regex_highlighting = { "org", "markdown" }

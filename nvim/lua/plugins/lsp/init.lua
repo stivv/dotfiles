@@ -20,8 +20,9 @@ return {
 			require('cmp_nvim_lsp').default_capabilities()
 		)
 
-		local servers = { 'volar', 'eslint', 'tsserver', 'bashls', 'dockerls', 'jsonls', 'emmet_ls', 'html', 'tailwindcss',
-			'intelephense', 'rust_analyzer', 'lua_ls' }
+		-- local servers = { 'volar', 'eslint', 'tsserver', 'bashls', 'dockerls', 'jsonls', 'emmet_ls', 'html', 'tailwindcss',
+		-- 'intelephense', 'rust_analyzer', 'lua_ls' }
+		local servers = {}
 
 		require('mason').setup()
 		require('mason-lspconfig').setup { ensure_installed = servers }
