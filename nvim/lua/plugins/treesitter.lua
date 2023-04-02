@@ -27,7 +27,7 @@ return {
 		event = { "BufReadPost", "BufNewFile" },
 		opts = {
 			sync_install = false,
-			ensure_installed = { 'bash', 'help', 'json', 'dockerfile' },
+			ensure_installed = { 'bash', 'json', 'dockerfile' },
 			highlight = {
 				enable = true,
 				additional_vim_regex_highlighting = { "org", "markdown" }
