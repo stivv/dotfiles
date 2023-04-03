@@ -14,11 +14,10 @@ M.setup = function(_, opts)
 		function(server)
 			local server_opts = servers[server] or {}
 
-			server_opts.capabilities = vim.tbl_deep_extend(
-				'force',
-				lspconfig.util.default_config.capabilities,
-				require('cmp_nvim_lsp').default_capabilities()
-			)
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
+			capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+			server_opts.capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 			lspconfig[server].setup(server_opts)
 		end
@@ -75,22 +74,22 @@ M.onAttach = function()
 			}, ev.buf)
 
 			-- Formatting
-			if vim.lsp.buf_get_clients()[ev.data.client_id].name ~= 'volar' then
-				vim.keymap.set('n', '<space>f', function()
-					vim.lsp.buf.format { async = true, filter = function(client)
-						return client.name ~= 'volar' and client.name ~= 'eslint'
-					end }
-				end, opts)
+			-- if vim.lsp.buf_get_clients()[ev.data.client_id].name ~= 'volar' then
+			vim.keymap.set('n', '<space>f', function()
+				vim.lsp.buf.format { async = true, filter = function(client)
+					return client.name ~= 'volar' and client.name ~= 'eslint'
+				end }
+			end, opts)
 
-				local formatGrp = vim.api.nvim_create_augroup("Format", { clear = true })
-				vim.api.nvim_create_autocmd("BufWritePre", {
-					buffer = ev.buf,
-					group = formatGrp,
-					command =
-					"lua vim.lsp.buf.format { async = false, filter = function(client) return client.name ~= 'volar' and client.name ~= 'eslint' end }",
-				})
-			end
-		end,
+			local formatGrp = vim.api.nvim_create_augroup("Format", { clear = true })
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				buffer = ev.buf,
+				group = formatGrp,
+				command =
+				"lua vim.lsp.buf.format { async = false, filter = function(client) return client.name ~= 'volar' and client.name ~= 'eslint' end }",
+			})
+		end
+		-- end,
 	})
 end
 
