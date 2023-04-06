@@ -6,7 +6,7 @@ return {
 		{ "nvim-telescope/telescope-file-browser.nvim" },
 		{ 'nvim-telescope/telescope-fzf-native.nvim',  build = 'make', cond = vim.fn.executable 'make' == 1 },
 	},
-	event = "VeryLazy",
+	cmd = "Telescope",
 	config = function()
 		-- [[ Configure Telescope ]]
 		-- See `:help telescope` and `:help telescope.setup()`
@@ -91,17 +91,19 @@ return {
 				previewer = false,
 			})
 		end, { desc = '[/] Fuzzily search in current buffer]' })
-
-		vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[ ] Find existing buffers' })
-		vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[S]earch [F]iles' })
-		vim.keymap.set('n', '<leader>fh', builtin.oldfiles, { desc = '[?] Find recently opened files' })
-		vim.keymap.set('n', '<leader>ft', builtin.help_tags, { desc = '[S]earch [H]elp' })
-		vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-		vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-		vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-
-		-- File browser
-		vim.keymap.set('n', '<leader>nt',
-			'<cmd>Telescope file_browser path=%:p:h previewer=false initial_mode=normal height=80 <cr>', { noremap = true })
-	end
+	end,
+	keys = {
+		{ '<leader>fb', '<cmd>Telescope buffers<cr>',     desc = '[ ] Find existing buffers' },
+		{ '<leader>ff', '<cmd>Telescope find_files<cr>',  desc = '[S]earch [F]iles' },
+		{ '<leader>fh', '<cmd>Telescope oldfiles<cr>',    desc = '[?] Find recently opened files' },
+		{ '<leader>ft', '<cmd>Telescope help_tags<cr>',   desc = '[S]earch [H]elp' },
+		{ '<leader>fw', '<cmd>Telescope grep_string<cr>', desc = '[S]earch current [W]ord' },
+		{ '<leader>fg', '<cmd>Telescope live_grep<cr>',   desc = '[S]earch by [G]rep' },
+		{ '<leader>fd', '<cmd>Telescope diagnostics<cr>', desc = '[S]earch [D]iagnostics' },
+		{
+			'<leader>nt',
+			'<cmd>Telescope file_browser path=%:p:h previewer=false initial_mode=normal height=80 <cr>',
+			noremap = true
+		},
+	}
 }
