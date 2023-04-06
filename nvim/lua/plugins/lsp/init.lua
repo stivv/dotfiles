@@ -10,10 +10,11 @@ return {
 			'hrsh7th/nvim-cmp',
 		},
 		config = function(plugin, options)
-			local server = require("plugins.lsp.server")
-			server.setup(plugin, options)
-			server.onAttach()
+			local lspconfig = require 'plugins.lsp.lspconfig'
+			lspconfig.setup(plugin, options)
+			lspconfig.onAttach()
 		end,
 	},
-	require 'plugins.lsp.cmp'.init
+	require 'plugins.lsp.cmp'.init,
+	require 'plugins.lsp.null_ls'.init,
 }

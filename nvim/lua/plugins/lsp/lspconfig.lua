@@ -77,7 +77,7 @@ M.onAttach = function()
 			if vim.lsp.buf_get_clients()[ev.data.client_id].name ~= 'volar' then
 				vim.keymap.set('n', '<space>f', function()
 					vim.lsp.buf.format { async = true, filter = function(client)
-						return client.name ~= 'volar' and client.name ~= 'eslint'
+						return client.name == 'null-ls'
 					end }
 				end, opts)
 
@@ -86,7 +86,7 @@ M.onAttach = function()
 					buffer = ev.buf,
 					group = formatGrp,
 					command =
-					"lua vim.lsp.buf.format { async = false, filter = function(client) return client.name ~= 'volar' and client.name ~= 'eslint' end }",
+					"lua vim.lsp.buf.format { async = false, filter = function(client) return client.name == 'null-ls' end }",
 				})
 			end
 		end,
