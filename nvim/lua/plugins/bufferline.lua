@@ -24,28 +24,12 @@ return {
 			max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
 			truncate_names = true, -- whether or not tab names should be truncated
 			tab_size = 18,
-			diagnostics = false, -- | "nvim_lsp" | "coc",
-			diagnostics_update_in_insert = false,
-			-- NOTE: this will be called a lot so don't do any heavy processing here
-			custom_filter = function(buf_number, buf_numbers)
-				-- filter out filetypes you don't want to see
-				if vim.bo[buf_number].filetype ~= "<i-dont-want-to-see-this>" then
-					return true
-				end
-				-- filter out by buffer name
-				if vim.fn.bufname(buf_number) ~= "<buffer-name-I-dont-want>" then
-					return true
-				end
-				-- filter out based on arbitrary rules
-				-- e.g. filter out vim wiki buffer from tabline in your work repo
-				if vim.fn.getcwd() == "<work-repo>" and vim.bo[buf_number].filetype ~= "wiki" then
-					return true
-				end
-				-- filter out by it's index number in list (don't show first buffer)
-				if buf_numbers[1] ~= buf_number then
-					return true
-				end
+			diagnostics = 'nvim_lsp', -- false | "nvim_lsp" | "coc",
+			diagnostics_indicator = function(count, level, diagnostics_dict, context)
+				local icon = level:match("error") and " " or " "
+				return " " .. icon .. count
 			end,
+			diagnostics_update_in_insert = false,
 			color_icons = true,           -- | false, -- whether or not to add the filetype icon highlights
 			show_buffer_icons = true,     -- | false, -- disable filetype icons for buffers
 			show_buffer_close_icons = true, -- | false,
@@ -54,9 +38,7 @@ return {
 			show_tab_indicators = true,   -- | false,
 			show_duplicate_prefix = true, -- | false, -- whether to show duplicate buffer prefix
 			persist_buffer_sort = true,   -- whether or not custom sorted buffers should persist
-			-- can also be a table containing 2 custom separators
-			-- [focused and unfocused]. eg: { '|', '|' }
-			separator_style = "thin",   -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
+			separator_style = "thin",     -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
 			enforce_regular_tabs = false, -- | true,
 			always_show_bufferline = true, -- | false,
 			hover = {
