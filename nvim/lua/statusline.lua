@@ -1,5 +1,27 @@
+vim.g.status = {
+	n = "Normal",
+	no = "Normal·Operator Pending",
+	v = "Visual",
+	V = "V·Line",
+	-- '^V' = 'V·Block',
+	s = "Select",
+	S = "S·Line",
+	-- ^S = 'S·Block',
+	i = "Insert",
+	R = "Replace",
+	Rv = "V·Replace",
+	c = "Command",
+	cv = "Vim Ex",
+	ce = "Ex",
+	r = "Prompt",
+	rm = "More",
+	-- r? = 'Confirm',
+	-- ! = 'Shell',
+	t = "Terminal",
+}
+
 local function status_line()
-	local mode = "%-3{%v:lua.string.upper(v:lua.vim.fn.mode())%}"
+	local mode = "%-5{%g:status[v:lua.vim.fn.mode()]%} "
 	local file_name = "%-.16t"
 	local modified = " %-m"
 	local right_align = "%="
