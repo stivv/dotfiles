@@ -40,6 +40,7 @@ return {
 			end,
 		})
 		vim.cmd([[ hi Normal guibg=NONE ctermbg=NONE ]])
+		vim.cmd([[ hi StatusLine cterm=bold ]])
 		vim.cmd([[ colorscheme tokyonight ]])
 	end,
 }

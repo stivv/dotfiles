@@ -1,3 +1,10 @@
+vim.cmd([[
+hi Status1 gui=bold guifg=#ffffff guibg=NONE
+hi Status2 gui=bold guifg=#38A89D guibg=NONE
+hi Status3 gui=bold guifg=#fabd2f guibg=NONE
+hi Status4 gui=bold guifg=#fb3333 guibg=NONE
+]])
+
 vim.g.status = {
 	n = "Normal",
 	no = "Normal·Operator Pending",
@@ -21,22 +28,24 @@ vim.g.status = {
 }
 
 local function status_line()
-	local mode = "%-5{%g:status[v:lua.vim.fn.mode()]%} "
-	local file_name = "%-.16t"
+	local mode = "%#Status2# %-5{%g:status[v:lua.vim.fn.mode()]%} "
+	local file_name = "%#Status1#  %-.16t"
 	local modified = " %-m"
-	local right_align = "%="
-	local file_type = " %y"
-	local line_no = "%10([%l/%L%)]"
-	local pct_thru_file = "%5p%%"
-	local branch = "  " .. vim.fn.system("git -C . branch --show-current")
+	local branch = " %#Status3# " .. vim.fn.system("git -C . branch --show-current")
+	local right_align = "%#Status1#%="
+	local diagnostics = "%#Status4#  %{%v:lua.vim.tbl_count(v:lua.vim.diagnostic.get())%}"
+	local file_type = "   %#Status1# %Y"
+	local line_no = "   %#Status3# %(%l/%L%)"
+	local pct_thru_file = "   %#Status2#%2p%%  "
 
 	return string.format(
-		"%s%s%s%s%s%s%s%s",
+		"%s%s%s%s%s%s%s%s%s",
 		mode,
 		file_name,
 		modified,
 		branch:gsub("\n", ""),
 		right_align,
+		diagnostics,
 		file_type,
 		line_no,
 		pct_thru_file
