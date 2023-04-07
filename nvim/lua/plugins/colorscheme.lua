@@ -1,12 +1,12 @@
 return {
-	'folke/tokyonight.nvim',
+	"folke/tokyonight.nvim",
 	lazy = false,
 	priority = 1000,
 	config = function()
-		require 'tokyonight'.setup {
+		require("tokyonight").setup({
 			transparent = true,
 			on_highlights = function(hl, c)
-				local prompt = "#2d3149"
+				c.bg_dark = "#0c0c0d"
 				hl.TelescopeNormal = {
 					bg = c.bg_dark,
 					fg = c.fg_dark,
@@ -34,9 +34,12 @@ return {
 					bg = c.bg_dark,
 					fg = c.bg_dark,
 				}
+				hl.StatusLine = {
+					bg = "#000000",
+				}
 			end,
-		}
-		vim.cmd [[ hi Normal guibg=NONE ctermbg=NONE ]]
-		vim.cmd [[ colorscheme tokyonight ]]
-	end
+		})
+		vim.cmd([[ hi Normal guibg=NONE ctermbg=NONE ]])
+		vim.cmd([[ colorscheme tokyonight ]])
+	end,
 }

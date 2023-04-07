@@ -6,16 +6,18 @@ end
 
 local M = {}
 
+M.sdfsd = {}
+
 M.init = {
-	'hrsh7th/nvim-cmp',
-	event = 'InsertEnter',
+	"hrsh7th/nvim-cmp",
+	event = "InsertEnter",
 	dependencies = {
-		'hrsh7th/cmp-nvim-lsp',
-		'hrsh7th/cmp-buffer',
-		'hrsh7th/cmp-path',
-		'L3MON4D3/LuaSnip',
-		'saadparwaiz1/cmp_luasnip',
-		'rafamadriz/friendly-snippets',
+		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-path",
+		"L3MON4D3/LuaSnip",
+		"saadparwaiz1/cmp_luasnip",
+		"rafamadriz/friendly-snippets",
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -24,52 +26,51 @@ M.init = {
 		require("luasnip.loaders.from_vscode").lazy_load()
 
 		local cmp_kinds = {
-			Text = '  ',
-			Method = '  ',
-			Function = '  ',
-			Constructor = '  ',
-			Field = '  ',
-			Variable = '  ',
-			Class = '  ',
-			Interface = '  ',
-			Module = '  ',
-			Property = '  ',
-			Unit = '  ',
-			Value = '  ',
-			Enum = '  ',
-			Keyword = '  ',
-			Snippet = '  ',
-			Color = '  ',
-			File = '  ',
-			Reference = '  ',
-			Folder = '  ',
-			EnumMember = '  ',
-			Constant = '  ',
-			Struct = '  ',
-			Event = '  ',
-			Operator = '  ',
-			TypeParameter = '  ',
+			Text = "  ",
+			Method = "  ",
+			Function = "  ",
+			Constructor = "  ",
+			Field = "  ",
+			Variable = "  ",
+			Class = "  ",
+			Interface = "  ",
+			Module = "  ",
+			Property = "  ",
+			Unit = "  ",
+			Value = "  ",
+			Enum = "  ",
+			Keyword = "  ",
+			Snippet = "  ",
+			Color = "  ",
+			File = "  ",
+			Reference = "  ",
+			Folder = "  ",
+			EnumMember = "  ",
+			Constant = "  ",
+			Struct = "  ",
+			Event = "  ",
+			Operator = "  ",
+			TypeParameter = "  ",
 		}
-
 
 		cmp.setup({
 			snippet = {
 				expand = function(args)
-					require('luasnip').lsp_expand(args.body)
+					require("luasnip").lsp_expand(args.body)
 				end,
 			},
 			sources = cmp.config.sources({
-				{ name = 'nvim_lsp' },
-				{ name = 'luasnip' },
-				{ name = 'buffer' },
-				{ name = 'path' },
+				{ name = "nvim_lsp" },
+				{ name = "luasnip" },
+				{ name = "buffer" },
+				{ name = "path" },
 			}),
-			mapping = cmp.mapping.preset.insert {
-				['<C-b>'] = cmp.mapping.scroll_docs(-4),
-				['<C-f>'] = cmp.mapping.scroll_docs(4),
-				['<C-Space>'] = cmp.mapping.complete(),
-				['<C-e>'] = cmp.mapping.abort(),
-				['<CR>'] = cmp.mapping.confirm { select = true },
+			mapping = cmp.mapping.preset.insert({
+				["<C-b>"] = cmp.mapping.scroll_docs(-4),
+				["<C-f>"] = cmp.mapping.scroll_docs(4),
+				["<C-Space>"] = cmp.mapping.complete(),
+				["<C-e>"] = cmp.mapping.abort(),
+				["<CR>"] = cmp.mapping.confirm({ select = true }),
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
@@ -90,10 +91,10 @@ M.init = {
 						fallback()
 					end
 				end, { "i", "s" }),
-			},
+			}),
 			formatting = {
 				format = function(_, vim_item)
-					vim_item.kind = (cmp_kinds[vim_item.kind] or '') .. vim_item.kind
+					vim_item.kind = (cmp_kinds[vim_item.kind] or "") .. vim_item.kind
 					return vim_item
 				end,
 			},
@@ -102,7 +103,7 @@ M.init = {
 			},
 		})
 
-		vim.cmd [[
+		vim.cmd([[
 			" gray
 			highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
 			" blue
@@ -119,8 +120,8 @@ M.init = {
 			highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
 			highlight! link CmpItemKindProperty CmpItemKindKeyword
 			highlight! link CmpItemKindUnit CmpItemKindKeyword
-		]]
-	end
+		]])
+	end,
 }
 
 return M
