@@ -1,5 +1,6 @@
 vim.cmd([[
-hi Status1 gui=bold guifg=#ffffff guibg=NONE
+hi Status0 gui=bold guifg=#38A89D guibg=#38A89D
+hi Status1 gui=bold guifg=#a9b1d6 guibg=NONE
 hi Status2 gui=bold guifg=#38A89D guibg=NONE
 hi Status3 gui=bold guifg=#fabd2f guibg=NONE
 hi Status4 gui=bold guifg=#fb3333 guibg=NONE
@@ -32,7 +33,7 @@ vim.g.diagnostics = function(type)
 end
 
 local function status_line()
-	local mode = "%#Status2# %-5{%g:status[v:lua.vim.fn.mode()]%}  "
+	local mode = "%#Status0# %#Status2#  %-5{%g:status[v:lua.vim.fn.mode()]%}  "
 	local file_name = "%#Status1#  %-.16t"
 	local modified = " %#Status4#%M"
 	local branch = "  %#Status3# " .. vim.fn.system("git -C . branch --show-current")
@@ -40,9 +41,9 @@ local function status_line()
 	local hint = "%#Status2#  %{%g:diagnostics('HINT')%}"
 	local warn = "%#Status3#  %{%g:diagnostics('WARN')%}"
 	local error = "%#Status4#  %{%g:diagnostics('ERROR')%}"
-	local file_type = "   %#Status1# %Y"
-	local line_no = "   %#Status3# %(%l/%L%)"
-	local pct_thru_file = "   %#Status2#%2p%%  "
+	local file_type = "   %#Status1#%Y"
+	local line_no = "   LN%l:COL%c"
+	local pct_thru_file = "  %2p%%  %#Status0# "
 
 	return string.format(
 		"%s%s%s%s%s%s%s%s%s%s%s",
