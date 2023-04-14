@@ -17,6 +17,7 @@ opt.signcolumn = "yes"
 
 require("statusline")
 require("keymaps")
+require("autocmd")
 
 -- Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
