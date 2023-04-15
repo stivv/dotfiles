@@ -34,13 +34,9 @@ return {
 					bg = c.bg_dark,
 					fg = c.bg_dark,
 				}
-				hl.StatusLine = {
-					bg = "#000000",
-				}
 			end,
 		})
 		vim.cmd([[ hi Normal guibg=NONE ctermbg=NONE ]])
-		vim.cmd([[ hi StatusLine cterm=bold ]])
 		vim.cmd([[ colorscheme tokyonight ]])
 	end,
 }
