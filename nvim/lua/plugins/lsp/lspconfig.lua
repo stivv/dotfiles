@@ -83,7 +83,7 @@ M.onAttach = function()
 					vim.lsp.buf.format({
 						async = true,
 						filter = function(client)
-							return client.name == "null-ls"
+							return client.name ~= "volar" and client.name ~= "eslint"
 						end,
 					})
 				end, opts)
@@ -92,7 +92,7 @@ M.onAttach = function()
 				vim.api.nvim_create_autocmd("BufWritePre", {
 					buffer = ev.buf,
 					group = formatGrp,
-					command = "lua vim.lsp.buf.format { async = false, filter = function(client) return client.name == 'null-ls' end }",
+					command = "lua vim.lsp.buf.format { async = false, filter = function(client) return client.name ~= 'volar' and client.name ~= 'eslint' end }",
 				})
 			end
 		end,
