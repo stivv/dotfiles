@@ -4,6 +4,7 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 local mapkey = function(mode, key, cmd, opts)
 	return vim.keymap.set(mode, key, cmd, opts)
 end
+
 mapkey("i", "jj", "<Esc>", { desc = "Faster escape" })
 mapkey("n", "<C-a>", "ggVG", { desc = "Select all" })
 mapkey("n", "<leader>h", "<cmd>bp<cr>", { desc = "Go to previous buffer" })

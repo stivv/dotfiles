@@ -22,10 +22,10 @@ opt.undolevels = 10000
 opt.wildmode = "longest:full,full"
 opt.splitbelow = true -- Put new windows below current
 opt.splitright = true -- Put new windows right of current
-opt.pumblend = 10 -- Popup blend
-opt.pumheight = 10 -- Maximum number of entries in a popup
+opt.pumblend = 10     -- Popup blend
+opt.pumheight = 10    -- Maximum number of entries in a popup
 opt.shortmess:append({ W = true, I = true, c = true })
-opt.scrolloff = 4 -- Lines of context
+opt.scrolloff = 4     -- Lines of context
 opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 
 -- Lazy
