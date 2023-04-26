@@ -1,9 +1,9 @@
 vim.cmd([[
-hi Status0 gui=bold guifg=#38A89D guibg=#38A89D
-hi Status1 gui=bold guifg=#a9b1d6 guibg=NONE
-hi Status2 gui=bold guifg=#38A89D guibg=NONE
-hi Status3 gui=bold guifg=#fabd2f guibg=NONE
-hi Status4 gui=bold guifg=#fb3333 guibg=NONE
+hi Status0 guifg=#38A89D guibg=#38A89D
+hi Status1 guifg=#a9b1d6 guibg=NONE
+hi Status2 guifg=#38A89D guibg=NONE
+hi Status3 guifg=#fabd2f guibg=NONE
+hi Status4 guifg=#fb3333 guibg=NONE
 ]])
 
 local status_line = function()
