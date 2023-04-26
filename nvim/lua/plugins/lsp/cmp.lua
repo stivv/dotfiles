@@ -6,8 +6,6 @@ end
 
 local M = {}
 
-M.sdfsd = {}
-
 M.init = {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
@@ -87,11 +85,19 @@ M.init = {
 						fallback()
 					end
 				end, { "i", "s" }),
-				["<a-j>"] = cmp.mapping(function()
-					luasnip.jump(1)
+				["<a-k>"] = cmp.mapping(function(fallback)
+					if luasnip.jumpable(-1) then
+						luasnip.jump(-1)
+					else
+						fallback()
+					end
 				end, { "i", "s" }),
-				["<a-k>"] = cmp.mapping(function()
-					luasnip.jump(-1)
+				["<a-j>"] = cmp.mapping(function(fallback)
+					if luasnip.expand_or_locally_jumpable() then
+						luasnip.expand_or_jump()
+					else
+						fallback()
+					end
 				end, { "i", "s" }),
 			}),
 			formatting = {

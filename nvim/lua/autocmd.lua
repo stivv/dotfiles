@@ -2,7 +2,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	group = vim.api.nvim_create_augroup("UserBufEnter", {}),
 	callback = function()
 		vim.g.gitBranch =
-			vim.fn.trim(vim.fn.system("git -C " .. vim.fn.expand("%:p:h") .. " branch --show-current 2> /dev/null"))
+				vim.fn.trim(vim.fn.system("git -C " .. vim.fn.expand("%:p:h") .. " branch --show-current 2> /dev/null"))
 
 		vim.g.statusMode = {
 			["n"] = "Normal",
@@ -26,4 +26,13 @@ vim.api.nvim_create_autocmd("BufEnter", {
 			["t"] = "Terminal",
 		}
 	end,
+})
+
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = highlight_group,
+	pattern = '*',
 })
