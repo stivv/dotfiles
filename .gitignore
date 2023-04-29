@@ -9,3 +9,5 @@ nvim/backup
 nvim/plugin/packer_compiled.lua
 
 qtile/__pycache__
+
+tmux/plugins
