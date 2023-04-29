@@ -1,9 +1,9 @@
 vim.cmd([[
-hi Status0 guifg=#38A89D guibg=#38A89D
-hi Status1 guifg=#a9b1d6 guibg=NONE
-hi Status2 guifg=#38A89D guibg=NONE
-hi Status3 guifg=#fabd2f guibg=NONE
-hi Status4 guifg=#fb3333 guibg=NONE
+hi Status0 guifg=#0d1117 guibg=#0d1117
+hi Status1 guifg=#a9b1d6 guibg=#161b22
+hi Status2 guifg=#38A89D guibg=#161b22
+hi Status3 guifg=#fabd2f guibg=#161b22
+hi Status4 guifg=#fb3333 guibg=#161b22
 ]])
 
 local status_line = function()
@@ -17,7 +17,7 @@ local status_line = function()
 	local error = "%#Status4#  %{%v:lua.require('statusline.diagnostic').get('ERROR')%}"
 	local file_type = "   %#Status1#%Y"
 	local line_no = "   %l:%c"
-	local pct_thru_file = "  %2p%%  %#Status0# "
+	local pct_thru_file = "  %2p%% %#Status0# "
 
 	return string.format(
 		"%s%s%s%s%s%s%s%s%s%s%s",

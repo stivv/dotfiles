@@ -16,7 +16,6 @@ opt.smartcase = true
 opt.hlsearch = false
 opt.updatetime = 250
 opt.signcolumn = "no"
-opt.cmdheight = 0
 opt.list = true
 opt.listchars = "trail:·,tab:»·,nbsp:_"
 opt.timeoutlen = 300
