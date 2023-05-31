@@ -3,7 +3,7 @@ return {
 		'nvim-treesitter/nvim-treesitter',
 		event = 'BufReadPre',
 		dependencies = {
-			'windwp/nvim-ts-autotag',
+			{ 'windwp/nvim-ts-autotag', event = 'InsertEnter', opts = {} },
 		},
 		opts = {
 			ensure_installed = {},
