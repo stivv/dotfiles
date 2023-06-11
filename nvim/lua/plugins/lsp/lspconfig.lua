@@ -19,8 +19,6 @@ M.setup = function(_, opts)
 			local server_opts = servers[server]
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 			server_opts.capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 			lspconfig[server].setup(server_opts)
