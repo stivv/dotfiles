@@ -6,6 +6,9 @@ return {
     { 'williamboman/mason.nvim', config = true },
     'williamboman/mason-lspconfig.nvim',
 
+    -- LSP status updates
+    { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
+
     -- Additional lua configuration, makes nvim stuff amazing!
     'folke/neodev.nvim',
   },
