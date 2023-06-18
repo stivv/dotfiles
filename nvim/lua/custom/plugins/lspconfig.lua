@@ -72,7 +72,14 @@ return {
       emmet_ls = {},
       html = {},
       tailwindcss = {},
-      eslint = {},
+      eslint = {
+        on_attach = function(_, bufnr)
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            command = "EslintFixAll",
+          })
+        end,
+      },
       intelephense = {},
       lua_ls = {
         Lua = {
