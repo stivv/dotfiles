@@ -55,8 +55,13 @@ return {
       end, { desc = 'Format current buffer with LSP' })
 
       -- Autoformat on save
-      local formatGrp = vim.api.nvim_create_augroup("Format", {})
+      local formatGrp = vim.api.nvim_create_augroup("LspFilesFormat", {})
       vim.api.nvim_create_autocmd("BufWritePre", { buffer = bufnr, group = formatGrp, command = "Format" })
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        pattern = { '*.tsx', '*.ts', '*.jsx', '*.js', '*.vue' },
+        command = 'silent! EslintFixAll',
+        group = vim.api.nvim_create_augroup('MyAutocmdsJavaScripFormatting', {}),
+      })
       nmap('<leader>f', '<cmd>Format<cr>', '[F]ormat')
     end
 
@@ -72,14 +77,7 @@ return {
       emmet_ls = {},
       html = {},
       tailwindcss = {},
-      eslint = {
-        on_attach = function(_, bufnr)
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = bufnr,
-            command = "EslintFixAll",
-          })
-        end,
-      },
+      eslint = {},
       intelephense = {},
       lua_ls = {
         Lua = {
