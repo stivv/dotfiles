@@ -1,47 +1,32 @@
+vim.g.editorconfig = false
+
 -- [[ Setting options ]]
--- See `:help vim.o`
--- NOTE: You can change these options as you wish!
 
--- Set highlight on search
-vim.o.hlsearch = false
+local opt = vim.opt
 
--- Make line numbers default
-vim.wo.number = true
-vim.wo.relativenumber = true
-
--- Enable mouse mode
-vim.o.mouse = 'a'
-
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
-
--- Enable break indent
-vim.o.breakindent = true
-
--- Tab length
-vim.bo.tabstop = 2
-vim.bo.shiftwidth = 2
-vim.bo.softtabstop = 2
-
--- Save undo history
-vim.o.undofile = true
-
--- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
-
--- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeout = true
-vim.o.timeoutlen = 300
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
-
--- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.termguicolors = true
+opt.background = "dark"
+opt.rnu = true
+opt.undofile = true
+opt.swapfile = false
+opt.completeopt = { "menu", "menuone", "noselect" }
+opt.ignorecase = true
+opt.smartcase = true
+opt.hlsearch = false
+opt.signcolumn = "no"
+opt.list = true
+opt.listchars = "trail:·,tab:»·,nbsp:_"
+opt.timeout = true
+opt.timeoutlen = 300
+opt.updatetime = 250
+opt.undolevels = 10000
+opt.wildmode = "longest:full,full"
+opt.splitbelow = true -- Put new windows below current
+opt.splitright = true -- Put new windows right of current
+opt.pumblend = 10     -- Popup blend
+opt.pumheight = 10    -- Maximum number of entries in a popup
+opt.scrolloff = 4     -- Lines of context
+opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
+opt.breakindent = true
