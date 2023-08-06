@@ -79,6 +79,7 @@ return {
       tailwindcss = {},
       eslint = {},
       intelephense = {},
+      nil_ls = {},
       lua_ls = {
         Lua = {
           workspace = { checkThirdParty = false },
