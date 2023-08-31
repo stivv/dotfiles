@@ -27,6 +27,10 @@ function M.setup(awful, beautiful, gears, modkey)
 			-- Prevent clients from being unreachable after screen count changes.
 			awful.placement.no_offscreen(c)
 		end
+
+		c.shape = function(cr,w,h)
+			gears.shape.rounded_rect(cr,w,h,8)
+    end
 	end)
 end
 

@@ -14,22 +14,31 @@ local theme = {}
 theme.font_var = "IosevkaTerm NF ExtraBold"
 theme.font = theme.font_var .. " 10.5"
 
-theme.bg_normal = "#0d1117"
-theme.bg_focus = "#0d1117"
-theme.bg_urgent = "#ff0000"
-theme.bg_minimize = "#444444"
+local oxford_blue = "#0d1117"
+local carribean_current = "#15616E"
+local naples_yellow = "#FDDF56"
+local bittersweet = "#FF5557"
+local sgbus_green = "#7ADC56"
+local papaya_whip = "#FCEECD"
+local jordy_blue = "#A0BDFF"
+local white = "#ffffff"
+
+theme.bg_normal = oxford_blue
+theme.bg_focus = oxford_blue
+theme.bg_urgent = bittersweet
+theme.bg_minimize = carribean_current
 theme.bg_systray = theme.bg_normal
 
-theme.fg_normal = "#aaaaaa"
-theme.fg_focus = "#ffffff"
-theme.fg_urgent = "#ffffff"
-theme.fg_minimize = "#ffffff"
+theme.fg_normal = jordy_blue
+theme.fg_focus = naples_yellow
+theme.fg_urgent = bittersweet
+theme.fg_minimize = papaya_whip
 
-theme.useless_gap = dpi(0)
-theme.border_width = dpi(0)
-theme.border_normal = "#30313A"
-theme.border_focus = "#30313A"
-theme.border_marked = "#30313A"
+theme.useless_gap = dpi(1)
+theme.border_width = dpi(2)
+theme.border_normal = carribean_current
+theme.border_focus = jordy_blue
+theme.border_marked = carribean_current
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(0)
