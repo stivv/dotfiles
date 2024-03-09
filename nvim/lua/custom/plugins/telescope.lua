@@ -127,3 +127,4 @@ return {
     vim.keymap.set('n', '<leader>nt', "<cmd>Telescope file_browser path=%:p:h previewer=false initial_mode=normal<cr>")
   end
 }
+
