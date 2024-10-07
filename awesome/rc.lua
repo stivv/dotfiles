@@ -37,3 +37,6 @@ require("configs.rules").setup(awful, beautiful, gears, modkey)
 
 -- focus
 require("configs.sloppyfocus").setup(beautiful)
+
+-- redshift screen temperature
+awful.util.spawn("redshift -P -O 9500")

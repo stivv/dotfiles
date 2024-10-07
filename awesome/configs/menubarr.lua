@@ -76,6 +76,12 @@ M.setup = function(awful, beautiful, gears, menubar)
 
 		local clock = wibox.widget({
 			{
+				widget = wibox.widget.textbox,
+				markup = " ",
+				valign = "center",
+				align = "center",
+			},
+			{
 				widget = wibox.widget.textclock,
 				format = "%H",
 				valign = "center",
@@ -88,7 +94,21 @@ M.setup = function(awful, beautiful, gears, menubar)
 				align = "center",
 			},
 			layout = wibox.layout.fixed.vertical,
-			spacing = 3,
+		})
+
+		local battery_perc = wibox.widget({
+			{
+				widget = wibox.widget.textbox,
+				markup = " ",
+				valign = "center",
+				align = "center",
+			},
+			{
+				widget = awful.widget.watch('bash -c "echo $(~/.config/awesome/scripts/battery_perc.sh")%', 60),
+				valign = "center",
+				align = "center",
+			},
+			layout = wibox.layout.fixed.vertical,
 		})
 
 		s.mywibox:setup({
@@ -101,10 +121,11 @@ M.setup = function(awful, beautiful, gears, menubar)
 				layout = wibox.layout.align.vertical,
 			},
 			{
-				layout = wibox.layout.align.vertical,
+				layout = wibox.layout.fixed.vertical,
 				spacing = 12,
-				clock,
 				wibox.widget.systray(),
+				clock,
+				battery_perc,
 			},
 		})
 	end)

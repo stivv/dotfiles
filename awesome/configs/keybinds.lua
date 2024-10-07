@@ -178,10 +178,10 @@ function M.setup(awful, beautiful, gears, menubar, modkey)
 			menubar.show()
 		end, { description = "show the menubar", group = "launcher" }),
 		awful.key({}, "XF86MonBrightnessDown", function()
-			awful.util.spawn("brightnessctl s 100-")
+			awful.util.spawn("brightnessctl s 1%-")
 		end),
 		awful.key({}, "XF86MonBrightnessUp", function()
-			awful.util.spawn("brightnessctl s 100+")
+			awful.util.spawn("brightnessctl s 1%+")
 		end),
 
 		-- Volume
