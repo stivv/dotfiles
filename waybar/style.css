@@ -1,16 +1,17 @@
 * {
 	border: none;
-  font-family: "CaskaydiaCove Nerd Font";
+  /* font-family: "CaskaydiaCove Nerd Font"; */
   font-weight: bold;
 	min-height: 5px;
 }
 
 window#waybar {
-  background: #161320;
-  opacity: 0.82;
+  background: transparent;
+  /* opacity: 0.82; */
   border-radius: 0;
   padding: 1px 0;
   box-shadow: 0 0 10px #fff;
+  margin-top: 20px;
 }
 
 window#waybar.hidden {
@@ -26,14 +27,16 @@ window#waybar.hidden {
 }
 
 #network, #cpu, #tray, #custom-launcher, #custom-power,
-#pulseaudio, #battery, #backlight, #clock,#memory {
-  margin: 2px;
+#pulseaudio, #battery, #backlight, #clock,#memory, #tags, #power-profiles-daemon {
+  background: #161320;
   padding: 2px 5;
+	padding-left: 10px;
+	padding-right: 10px;
 	border-radius: 5px;
 	transition: none;
 	color: #DDB6F2;
   margin: 4px;
-	font-size: 11px;
+	font-size: 13px;
 }
 
 /* #network { */
@@ -109,7 +112,7 @@ window#waybar.hidden {
 }
 
 #tags button {
-	font-size: 13px;
+	font-size: 17px;
 	padding: 0px;
 	margin: 0px 8px;
 	color: #bd93f9;
@@ -124,7 +127,7 @@ window#waybar.hidden {
 
 #tags button.focused.occupied, #tags button.focused {
 	color: #ff9900;
-	font-size: 18px;
+	font-size: 17px;
 }
 
 #tags button.occupied {
