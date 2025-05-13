@@ -1,0 +1,85 @@
+-- Define your colors
+local colors = {
+	background = "#030712",
+	foreground = "#e4e7f1",
+	red = "#7f1d1d",
+	green = "#15803d",
+	blue = "#83a598",
+	yellow = "#fabd2f",
+	magenta = "#d3869b",
+	cyan = "#8ec07c",
+	gray = "#8f909d",
+	dark_gray = "#3c3836",
+	light_gray = "#504945",
+}
+
+-- Set the colorscheme properties
+vim.cmd("highlight clear")
+if vim.fn.exists("syntax_on") then
+	vim.cmd("syntax reset")
+end
+vim.o.background = "dark"
+vim.g.colors_name = "charcoal"
+
+-- Set highlight groups
+local hl = vim.api.nvim_set_hl
+
+hl(0, "Normal", { fg = colors.foreground, bg = colors.background })
+hl(0, "LineNr", { fg = colors.gray })
+hl(0, "CursorLineNr", { fg = colors.foreground, bold = true })
+
+-- Tree-sitter highlight groups
+hl(0, "@comment", { fg = colors.gray, italic = true })
+hl(0, "@string", { fg = colors.green })
+hl(0, "@string.regex", { fg = colors.cyan })
+hl(0, "@string.escape", { fg = colors.magenta })
+hl(0, "@character", { fg = colors.yellow })
+hl(0, "@number", { fg = colors.yellow })
+hl(0, "@boolean", { fg = colors.magenta })
+hl(0, "@float", { fg = colors.yellow })
+hl(0, "@function", { fg = colors.blue })
+hl(0, "@function.builtin", { fg = colors.blue, italic = true })
+hl(0, "@function.macro", { fg = colors.magenta })
+hl(0, "@parameter", { fg = colors.foreground })
+hl(0, "@method", { fg = colors.blue })
+hl(0, "@field", { fg = colors.foreground })
+hl(0, "@property", { fg = colors.foreground })
+hl(0, "@constructor", { fg = colors.blue })
+hl(0, "@operator", { fg = colors.foreground })
+hl(0, "@keyword", { fg = colors.magenta, bold = true })
+hl(0, "@keyword.function", { fg = colors.magenta, bold = true })
+hl(0, "@keyword.operator", { fg = colors.magenta })
+hl(0, "@keyword.return", { fg = colors.magenta })
+hl(0, "@conditional", { fg = colors.magenta, bold = true })
+hl(0, "@repeat", { fg = colors.magenta, bold = true })
+hl(0, "@label", { fg = colors.foreground })
+hl(0, "@exception", { fg = colors.red })
+
+hl(0, "@type", { fg = colors.cyan })
+hl(0, "@type.builtin", { fg = colors.cyan, italic = true })
+hl(0, "@type.definition", { fg = colors.cyan, bold = true })
+hl(0, "@type.qualifier", { fg = colors.magenta })
+
+hl(0, "@variable", { fg = colors.foreground })
+hl(0, "@variable.member", { fg = colors.gray })
+hl(0, "@variable.builtin", { fg = colors.blue, italic = true })
+hl(0, "@constant", { fg = colors.yellow })
+hl(0, "@constant.builtin", { fg = colors.yellow, italic = true })
+hl(0, "@constant.macro", { fg = colors.magenta })
+
+hl(0, "@punctuation.delimiter", { fg = colors.foreground })
+hl(0, "@punctuation.bracket", { fg = colors.foreground })
+hl(0, "@punctuation.special", { fg = colors.magenta })
+
+hl(0, "@tag", { fg = colors.blue })
+hl(0, "@tag.attribute", { fg = colors.gray })
+
+-- FLoats
+hl(0, "FloatBorder", { bg = colors.background, fg = colors.gray })
+hl(0, "BlinkCmpMenu", { bg = colors.background })
+hl(0, "BlinkCmpMenuBorder", { bg = colors.background, fg = colors.gray })
+hl(0, "BlinkCmpMenuSelection", { bg = colors.gray, fg = colors.background })
+hl(0, "TelescopeBorder", { bg = colors.background, fg = colors.background })
+
+hl(0, "IncSearch", { bg = colors.gray, fg = colors.background })
+hl(0, "WhichKeyBorder", { bg = colors.background, fg = colors.gray })
