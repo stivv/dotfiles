@@ -1,0 +1,12 @@
+theme = tokyonight_moon
+
+font-size = 11
+
+font-family = M+1Code Nerd Font Mono Med
+
+window-padding-x = 0
+window-padding-y = 0
+window-padding-balance = true
+window-padding-color = "extend"
+
+cursor-invert-fg-bg = true
